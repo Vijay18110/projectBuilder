@@ -1,0 +1,4 @@
+'use client';
+import {useState,useRef} from 'react';
+import s from './NotificationPanelsExample.module.css';
+export default function NotificationPanelsExample({variant='standard'}:{variant?:string}){const [read,setRead]=useState(false);return <section className={[s.demo,s.panel,s[variant]].join(' ')}><h3>Notifications</h3><button className={s.button} onClick={()=>setRead(!read)}>{read?'Reset example':'Mark all read'}</button><div aria-live="polite">{['Design review is ready','Your export is complete','Welcome to your workspace'].map(x=><div className={s.notice} key={x}>{read?'✓ ':'● '}{x}</div>)}<p className={s.muted}>{read?'All caught up.':'Three unread sample notifications.'}</p></div></section>}

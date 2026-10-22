@@ -1,0 +1,4 @@
+'use client';
+import {useState,useRef} from 'react';
+import s from './ChatLayoutExample.module.css';
+export default function ChatLayoutExample({variant='standard'}:{variant?:string}){const [messages,setMessages]=useState(['Welcome to the design review.']),[text,setText]=useState('');return <section className={[s.demo,s.panel,s[variant]].join(' ')}><h3>Team conversation</h3><div aria-live="polite">{messages.map((x,i)=><p className={s.message} key={i}>{x}</p>)}</div><form onSubmit={e=>{e.preventDefault();if(text.trim().length<2)return;setMessages([...messages,text.trim()]);setText('')}}><label className={s.label}>Message<input className={s.input} value={text} onChange={e=>setText(e.target.value)} required minLength={2}/></label><button className={s.button}>Send example</button></form></section>}

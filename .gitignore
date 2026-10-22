@@ -1,0 +1,8 @@
+node_modules
+.next
+.env
+data
+*.tsbuildinfo
+.forge-checks
+
+.forge-build

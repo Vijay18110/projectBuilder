@@ -1,0 +1,1 @@
+const {spawnSync}=require('node:child_process');for(const script of ['scripts/sync-dropdowns.cjs','scripts/sync-backend.cjs','scripts/sync-studio-features.cjs','scripts/sync-studio-layout.cjs','scripts/sync-theme-backgrounds.cjs']){const result=spawnSync(process.execPath,[script],{stdio:'inherit'});if(result.status)process.exit(result.status)}

@@ -1,0 +1,4 @@
+'use client';
+import {useState,useRef} from 'react';
+import s from './SplitButtonsExample.module.css';
+export default function SplitButtonsExample({variant='standard'}:{variant?:string}){const [message,setMessage]=useState('Choose an action');const menu=useRef<HTMLDetailsElement>(null);return <div className={s.demo}><div className={[s.row,s[variant]].join(' ')}><button className={s.button} onClick={()=>setMessage('Example saved')}>Save changes</button><details ref={menu} className={s.menu}><summary>More actions</summary><div>{['Save as draft','Duplicate','Archive'].map(x=><button className={s.button} key={x} onClick={()=>{setMessage(x+' selected');if(menu.current)menu.current.open=false}}>{x}</button>)}</div></details></div><p className={s.muted} role="status">{message}</p></div>}

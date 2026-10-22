@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,name TEXT,email TEXT UNIQUE,password TEXT,role TEXT,verified INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,user_id TEXT,expires INTEGER);
+CREATE TABLE IF NOT EXISTS records(id TEXT PRIMARY KEY,owner TEXT,kind TEXT,data TEXT);
+CREATE TABLE IF NOT EXISTS tokens(token TEXT PRIMARY KEY,user_id TEXT,kind TEXT,expires INTEGER);
+CREATE TABLE IF NOT EXISTS limits(key TEXT PRIMARY KEY,count INTEGER,expires INTEGER);
+CREATE TABLE IF NOT EXISTS migrations(version INTEGER PRIMARY KEY,applied TEXT);
+CREATE INDEX IF NOT EXISTS record_owner_kind ON records(owner,kind);
+CREATE INDEX IF NOT EXISTS session_user ON sessions(user_id);
+INSERT OR IGNORE INTO migrations VALUES(1,datetime('now'));

@@ -1,0 +1,1131 @@
+[
+  {
+    "id": "buttons",
+    "name": "Buttons",
+    "category": "Actions",
+    "description": "Everyday actions with distinct emphasis.",
+    "icon": "MousePointer2",
+    "variants": [
+      "solid",
+      "outline",
+      "soft",
+      "ghost",
+      "pill"
+    ],
+    "tags": "",
+    "component": "ButtonsExample"
+  },
+  {
+    "id": "icon-buttons",
+    "name": "Icon buttons",
+    "category": "Actions",
+    "description": "Compact actions with accessible labels.",
+    "icon": "Heart",
+    "variants": [
+      "soft",
+      "outline",
+      "solid",
+      "circle"
+    ],
+    "tags": "",
+    "component": "IconButtonsExample"
+  },
+  {
+    "id": "button-group",
+    "name": "Button groups",
+    "category": "Actions",
+    "description": "Connected choices and view controls.",
+    "icon": "Group",
+    "variants": [
+      "outline",
+      "soft",
+      "pill"
+    ],
+    "tags": "",
+    "component": "ButtonGroupExample"
+  },
+  {
+    "id": "dropdown",
+    "name": "Dropdown menus",
+    "category": "Actions",
+    "description": "Contextual actions in a compact menu.",
+    "icon": "ListFilter",
+    "variants": [
+      "outline",
+      "soft",
+      "solid"
+    ],
+    "tags": "",
+    "component": "DropdownExample"
+  },
+  {
+    "id": "floating-action",
+    "name": "Floating action buttons",
+    "category": "Actions",
+    "description": "A prominent shortcut to the next action.",
+    "icon": "Plus",
+    "variants": [
+      "solid",
+      "soft",
+      "pill"
+    ],
+    "tags": "",
+    "component": "FloatingActionExample"
+  },
+  {
+    "id": "text-input",
+    "name": "Text inputs",
+    "category": "Forms",
+    "description": "Labeled fields with helper and validation states.",
+    "icon": "TextCursorInput",
+    "variants": [
+      "outline",
+      "filled",
+      "underlined"
+    ],
+    "tags": "",
+    "component": "TextInputExample"
+  },
+  {
+    "id": "password-input",
+    "name": "Password inputs",
+    "category": "Forms",
+    "description": "Visibility controls and strength feedback.",
+    "icon": "LockKeyhole",
+    "variants": [
+      "outline",
+      "filled",
+      "underlined"
+    ],
+    "tags": "",
+    "component": "PasswordInputExample"
+  },
+  {
+    "id": "textarea",
+    "name": "Textareas",
+    "category": "Forms",
+    "description": "Room for a longer thought, with a character count.",
+    "icon": "AlignLeft",
+    "variants": [
+      "outline",
+      "filled",
+      "underlined"
+    ],
+    "tags": "",
+    "component": "TextareaExample"
+  },
+  {
+    "id": "select",
+    "name": "Select menus",
+    "category": "Forms",
+    "description": "Native, keyboard-friendly single selection.",
+    "icon": "ChevronsUpDown",
+    "variants": [
+      "outline",
+      "filled",
+      "underlined"
+    ],
+    "tags": "",
+    "component": "SelectExample"
+  },
+  {
+    "id": "multiselect",
+    "name": "Multi-select",
+    "category": "Forms",
+    "description": "Choose several options with removable selections.",
+    "icon": "ListChecks",
+    "variants": [
+      "outline",
+      "soft",
+      "pill"
+    ],
+    "tags": "",
+    "component": "MultiselectExample"
+  },
+  {
+    "id": "checkbox",
+    "name": "Checkboxes",
+    "category": "Forms",
+    "description": "Independent choices, with classic and card styles.",
+    "icon": "SquareCheck",
+    "variants": [
+      "classic",
+      "cards",
+      "soft"
+    ],
+    "tags": "",
+    "component": "CheckboxExample"
+  },
+  {
+    "id": "radio",
+    "name": "Radio groups",
+    "category": "Forms",
+    "description": "Clear, mutually exclusive choices.",
+    "icon": "CircleDot",
+    "variants": [
+      "classic",
+      "cards",
+      "soft"
+    ],
+    "tags": "",
+    "component": "RadioExample"
+  },
+  {
+    "id": "switch",
+    "name": "Switches",
+    "category": "Forms",
+    "description": "Immediate settings with explicit on and off states.",
+    "icon": "ToggleRight",
+    "variants": [
+      "solid",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "SwitchExample"
+  },
+  {
+    "id": "range",
+    "name": "Range sliders",
+    "category": "Forms",
+    "description": "An intuitive way to choose a numeric value.",
+    "icon": "SlidersHorizontal",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "RangeExample"
+  },
+  {
+    "id": "number-input",
+    "name": "Number inputs",
+    "category": "Forms",
+    "description": "Bounded values with increment and decrement controls.",
+    "icon": "Hash",
+    "variants": [
+      "outline",
+      "filled",
+      "pill"
+    ],
+    "tags": "",
+    "component": "NumberInputExample"
+  },
+  {
+    "id": "date-picker",
+    "name": "Date & date range",
+    "category": "Forms",
+    "description": "Native calendars and ordered date ranges.",
+    "icon": "CalendarDays",
+    "variants": [
+      "single",
+      "range",
+      "filled"
+    ],
+    "tags": "",
+    "component": "DatePickerExample"
+  },
+  {
+    "id": "search",
+    "name": "Search fields",
+    "category": "Forms",
+    "description": "Live filtering with a useful empty state.",
+    "icon": "Search",
+    "variants": [
+      "outline",
+      "filled",
+      "pill"
+    ],
+    "tags": "",
+    "component": "SearchExample"
+  },
+  {
+    "id": "file-upload",
+    "name": "File upload",
+    "category": "Forms",
+    "description": "Local file selection with type and size checks.",
+    "icon": "UploadCloud",
+    "variants": [
+      "dropzone",
+      "compact",
+      "soft"
+    ],
+    "tags": "",
+    "component": "FileUploadExample"
+  },
+  {
+    "id": "otp",
+    "name": "Verification codes",
+    "category": "Forms",
+    "description": "A single accessible field with code-friendly input.",
+    "icon": "KeyRound",
+    "variants": [
+      "outline",
+      "filled",
+      "underlined"
+    ],
+    "tags": "",
+    "component": "OtpExample"
+  },
+  {
+    "id": "color-picker",
+    "name": "Color pickers",
+    "category": "Forms",
+    "description": "Native color selection with a live swatch.",
+    "icon": "Pipette",
+    "variants": [
+      "outline",
+      "soft",
+      "circle"
+    ],
+    "tags": "",
+    "component": "ColorPickerExample"
+  },
+  {
+    "id": "cards",
+    "name": "Content cards",
+    "category": "Data display",
+    "description": "Versatile surfaces for content and actions.",
+    "icon": "PanelsTopLeft",
+    "variants": [
+      "bordered",
+      "elevated",
+      "gradient",
+      "flat"
+    ],
+    "tags": "",
+    "component": "CardsExample"
+  },
+  {
+    "id": "stat-cards",
+    "name": "Statistic cards",
+    "category": "Data display",
+    "description": "Metrics, comparison trends, and compact summaries.",
+    "icon": "TrendingUp",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "StatCardsExample"
+  },
+  {
+    "id": "table",
+    "name": "Data tables",
+    "category": "Data display",
+    "description": "Sortable example rows with status indicators.",
+    "icon": "Table2",
+    "variants": [
+      "standard",
+      "striped",
+      "compact",
+      "borderless"
+    ],
+    "tags": "",
+    "component": "TableExample"
+  },
+  {
+    "id": "lists",
+    "name": "Lists & list groups",
+    "category": "Data display",
+    "description": "Selectable rows for content and settings.",
+    "icon": "List",
+    "variants": [
+      "standard",
+      "bordered",
+      "soft"
+    ],
+    "tags": "",
+    "component": "ListsExample"
+  },
+  {
+    "id": "avatars",
+    "name": "Avatars & groups",
+    "category": "Data display",
+    "description": "Initials, team stacks, and availability indicators.",
+    "icon": "CircleUserRound",
+    "variants": [
+      "circle",
+      "rounded",
+      "group"
+    ],
+    "tags": "",
+    "component": "AvatarsExample"
+  },
+  {
+    "id": "badges",
+    "name": "Badges & tags",
+    "category": "Data display",
+    "description": "Status, labels, and removable filters.",
+    "icon": "Tag",
+    "variants": [
+      "soft",
+      "solid",
+      "outline",
+      "pill"
+    ],
+    "tags": "",
+    "component": "BadgesExample"
+  },
+  {
+    "id": "progress",
+    "name": "Progress indicators",
+    "category": "Data display",
+    "description": "Track completion with clear numeric feedback.",
+    "icon": "ChartNoAxesColumnIncreasing",
+    "variants": [
+      "bar",
+      "segmented",
+      "circle"
+    ],
+    "tags": "",
+    "component": "ProgressExample"
+  },
+  {
+    "id": "tooltip",
+    "name": "Tooltips",
+    "category": "Data display",
+    "description": "Helpful context on hover and keyboard focus.",
+    "icon": "MessageCircleQuestionMark",
+    "variants": [
+      "dark",
+      "light",
+      "soft"
+    ],
+    "tags": "",
+    "component": "TooltipExample"
+  },
+  {
+    "id": "typography",
+    "name": "Typography",
+    "category": "Data display",
+    "description": "A consistent hierarchy for readable pages.",
+    "icon": "Type",
+    "variants": [
+      "standard",
+      "editorial",
+      "compact"
+    ],
+    "tags": "",
+    "component": "TypographyExample"
+  },
+  {
+    "id": "divider",
+    "name": "Dividers",
+    "category": "Data display",
+    "description": "Separate content without adding visual weight.",
+    "icon": "SeparatorHorizontal",
+    "variants": [
+      "simple",
+      "labeled",
+      "dashed"
+    ],
+    "tags": "",
+    "component": "DividerExample"
+  },
+  {
+    "id": "tabs",
+    "name": "Tabs",
+    "category": "Navigation",
+    "description": "Switch between related views without losing context.",
+    "icon": "PanelsLeftBottom",
+    "variants": [
+      "underline",
+      "pills",
+      "segmented"
+    ],
+    "tags": "",
+    "component": "TabsExample"
+  },
+  {
+    "id": "breadcrumbs",
+    "name": "Breadcrumbs",
+    "category": "Navigation",
+    "description": "A readable path through nested content.",
+    "icon": "Navigation",
+    "variants": [
+      "chevron",
+      "slash",
+      "pills"
+    ],
+    "tags": "",
+    "component": "BreadcrumbsExample"
+  },
+  {
+    "id": "pagination",
+    "name": "Pagination",
+    "category": "Navigation",
+    "description": "Move through results with clear page state.",
+    "icon": "Ellipsis",
+    "variants": [
+      "outline",
+      "soft",
+      "circle"
+    ],
+    "tags": "",
+    "component": "PaginationExample"
+  },
+  {
+    "id": "navbar",
+    "name": "Navigation bars",
+    "category": "Navigation",
+    "description": "Responsive site headers with a mobile menu.",
+    "icon": "PanelTop",
+    "variants": [
+      "standard",
+      "floating",
+      "dark"
+    ],
+    "tags": "",
+    "component": "NavbarExample"
+  },
+  {
+    "id": "sidebar",
+    "name": "Side navigation",
+    "category": "Navigation",
+    "description": "Grouped navigation with active and compact states.",
+    "icon": "PanelLeft",
+    "variants": [
+      "expanded",
+      "compact",
+      "soft"
+    ],
+    "tags": "",
+    "component": "SidebarExample"
+  },
+  {
+    "id": "stepper",
+    "name": "Steppers",
+    "category": "Navigation",
+    "description": "A visible path through multi-step tasks.",
+    "icon": "ListOrdered",
+    "variants": [
+      "numbered",
+      "dots",
+      "vertical"
+    ],
+    "tags": "",
+    "component": "StepperExample"
+  },
+  {
+    "id": "alerts",
+    "name": "Alerts",
+    "category": "Feedback",
+    "description": "Contextual feedback with a dismiss action.",
+    "icon": "CircleAlert",
+    "variants": [
+      "info",
+      "success",
+      "warning",
+      "error"
+    ],
+    "tags": "",
+    "component": "AlertsExample"
+  },
+  {
+    "id": "toast",
+    "name": "Toast notifications",
+    "category": "Feedback",
+    "description": "Transient feedback with a live region.",
+    "icon": "BellRing",
+    "variants": [
+      "success",
+      "info",
+      "error"
+    ],
+    "tags": "",
+    "component": "ToastExample"
+  },
+  {
+    "id": "modal",
+    "name": "Modal dialogs",
+    "category": "Feedback",
+    "description": "Focused tasks with native focus trapping and Escape support.",
+    "icon": "SquareArrowOutUpRight",
+    "variants": [
+      "standard",
+      "confirmation",
+      "fullscreen"
+    ],
+    "tags": "",
+    "component": "ModalExample"
+  },
+  {
+    "id": "drawer",
+    "name": "Drawers & sheets",
+    "category": "Feedback",
+    "description": "Slide-out contextual panels in three positions.",
+    "icon": "PanelRightOpen",
+    "variants": [
+      "right",
+      "left",
+      "bottom"
+    ],
+    "tags": "",
+    "component": "DrawerExample"
+  },
+  {
+    "id": "accordion",
+    "name": "Accordions",
+    "category": "Feedback",
+    "description": "Expandable content with native keyboard behavior.",
+    "icon": "ChevronsDownUp",
+    "variants": [
+      "bordered",
+      "separated",
+      "minimal"
+    ],
+    "tags": "",
+    "component": "AccordionExample"
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton loaders",
+    "category": "Feedback",
+    "description": "Content-shaped placeholders while data arrives.",
+    "icon": "ScanLine",
+    "variants": [
+      "card",
+      "list",
+      "text"
+    ],
+    "tags": "",
+    "component": "SkeletonExample"
+  },
+  {
+    "id": "empty-state",
+    "name": "Empty states",
+    "category": "Feedback",
+    "description": "Useful next steps when there is nothing to show yet.",
+    "icon": "Inbox",
+    "variants": [
+      "standard",
+      "bordered",
+      "soft"
+    ],
+    "tags": "",
+    "component": "EmptyStateExample"
+  },
+  {
+    "id": "loading",
+    "name": "Loading indicators",
+    "category": "Feedback",
+    "description": "Compact spinners and loading button states.",
+    "icon": "LoaderCircle",
+    "variants": [
+      "spinner",
+      "dots",
+      "button"
+    ],
+    "tags": "",
+    "component": "LoadingExample"
+  },
+  {
+    "id": "popover",
+    "name": "Popovers",
+    "category": "Feedback",
+    "description": "Small contextual panels for controls and information.",
+    "icon": "MessageSquareText",
+    "variants": [
+      "standard",
+      "soft",
+      "floating"
+    ],
+    "tags": "",
+    "component": "PopoverExample"
+  },
+  {
+    "id": "hero",
+    "name": "Hero sections",
+    "category": "Marketing",
+    "description": "A strong opening for your product story.",
+    "icon": "Sparkles",
+    "variants": [
+      "centered",
+      "split",
+      "gradient"
+    ],
+    "tags": "",
+    "component": "HeroExample"
+  },
+  {
+    "id": "pricing",
+    "name": "Pricing cards",
+    "category": "Marketing",
+    "description": "Plan options with monthly and annual billing.",
+    "icon": "CreditCard",
+    "variants": [
+      "standard",
+      "featured",
+      "minimal"
+    ],
+    "tags": "",
+    "component": "PricingExample"
+  },
+  {
+    "id": "testimonial",
+    "name": "Testimonials",
+    "category": "Marketing",
+    "description": "Social proof with quotes, people, and ratings.",
+    "icon": "Quote",
+    "variants": [
+      "standard",
+      "bordered",
+      "soft"
+    ],
+    "tags": "",
+    "component": "TestimonialExample"
+  },
+  {
+    "id": "feature-grid",
+    "name": "Feature grids",
+    "category": "Marketing",
+    "description": "Explain value with compact, readable highlights.",
+    "icon": "Grid2X2",
+    "variants": [
+      "cards",
+      "minimal",
+      "soft"
+    ],
+    "tags": "",
+    "component": "FeatureGridExample"
+  },
+  {
+    "id": "footer",
+    "name": "Footers",
+    "category": "Marketing",
+    "description": "Close the page with useful links and a brand signature.",
+    "icon": "PanelBottom",
+    "variants": [
+      "standard",
+      "columns",
+      "dark"
+    ],
+    "tags": "",
+    "component": "FooterExample"
+  },
+  {
+    "id": "carousel",
+    "name": "Carousels",
+    "category": "Marketing",
+    "description": "Keyboard-friendly slides with explicit controls.",
+    "icon": "GalleryHorizontalEnd",
+    "variants": [
+      "cards",
+      "hero",
+      "minimal"
+    ],
+    "tags": "",
+    "component": "CarouselExample"
+  },
+  {
+    "id": "newsletter",
+    "name": "Newsletter signup",
+    "category": "Marketing",
+    "description": "A compact, validated email subscription example.",
+    "icon": "Mail",
+    "variants": [
+      "standard",
+      "soft",
+      "inline"
+    ],
+    "tags": "",
+    "component": "NewsletterExample"
+  },
+  {
+    "id": "timeline",
+    "name": "Activity timelines",
+    "category": "Data display",
+    "description": "A chronological view of meaningful events.",
+    "icon": "History",
+    "variants": [
+      "standard",
+      "cards",
+      "compact"
+    ],
+    "tags": "",
+    "component": "TimelineExample"
+  },
+  {
+    "id": "product-card",
+    "name": "Product cards",
+    "category": "Commerce",
+    "description": "Product details, pricing, and local cart feedback.",
+    "icon": "ShoppingBag",
+    "variants": [
+      "standard",
+      "horizontal",
+      "minimal"
+    ],
+    "tags": "",
+    "component": "ProductCardExample"
+  },
+  {
+    "id": "quantity",
+    "name": "Quantity selectors",
+    "category": "Commerce",
+    "description": "Bounded item quantities with a visible total.",
+    "icon": "BetweenHorizontalStart",
+    "variants": [
+      "outline",
+      "filled",
+      "pill"
+    ],
+    "tags": "",
+    "component": "QuantityExample"
+  },
+  {
+    "id": "rating",
+    "name": "Star ratings",
+    "category": "Commerce",
+    "description": "Interactive, accessible feedback scores.",
+    "icon": "Star",
+    "variants": [
+      "standard",
+      "soft",
+      "large"
+    ],
+    "tags": "",
+    "component": "RatingExample"
+  },
+  {
+    "id": "cart-summary",
+    "name": "Cart summaries",
+    "category": "Commerce",
+    "description": "A clear checkout summary with local quantity controls.",
+    "icon": "ShoppingCart",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "CartSummaryExample"
+  },
+  {
+    "id": "cookie-banner",
+    "name": "Cookie banners",
+    "category": "Feedback",
+    "description": "Accept and decline choices with clear local feedback.",
+    "icon": "Cookie",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "CookieBannerExample"
+  },
+  {
+    "id": "command-menu",
+    "name": "Command search",
+    "category": "Navigation",
+    "description": "Searchable commands with keyboard-friendly controls.",
+    "icon": "Command",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "CommandMenuExample"
+  },
+  {
+    "id": "notification-list",
+    "name": "Notification lists",
+    "category": "Data display",
+    "description": "Read and unread activity with a mark-all action.",
+    "icon": "Bell",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "NotificationListExample"
+  },
+  {
+    "id": "segmented-control",
+    "name": "Segmented controls",
+    "category": "Forms",
+    "description": "A compact choice among a small set of options.",
+    "icon": "Rows3",
+    "variants": [
+      "soft",
+      "outline",
+      "pill"
+    ],
+    "tags": "",
+    "component": "SegmentedControlExample"
+  },
+  {
+    "id": "login-form",
+    "name": "Login forms",
+    "category": "Forms",
+    "description": "Validated sign-in layouts with password visibility.",
+    "icon": "LogIn",
+    "variants": [
+      "standard",
+      "soft",
+      "minimal"
+    ],
+    "tags": "",
+    "component": "LoginFormExample"
+  },
+  {
+    "id": "contact-form",
+    "name": "Contact forms",
+    "category": "Forms",
+    "description": "Validated inquiries with clear submission feedback.",
+    "icon": "Send",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "tags": "",
+    "component": "ContactFormExample"
+  },
+  {
+    "id": "social-links",
+    "name": "Social & share actions",
+    "category": "Actions",
+    "description": "Copy a shareable example link with feedback.",
+    "icon": "Share2",
+    "variants": [
+      "outline",
+      "soft",
+      "circle"
+    ],
+    "tags": "",
+    "component": "SocialLinksExample"
+  },
+  {
+    "id": "icon-wrapper",
+    "name": "Icon wrappers",
+    "category": "Data display",
+    "description": "Consistent icon shapes, sizing, and emphasis.",
+    "icon": "Shapes",
+    "variants": [
+      "rounded",
+      "circle",
+      "outline",
+      "solid",
+      "soft"
+    ],
+    "tags": "",
+    "component": "IconWrapperExample"
+  },
+  {
+    "id": "image-gallery",
+    "name": "Image galleries",
+    "category": "Marketing",
+    "description": "A responsive visual grid with a focused lightbox.",
+    "icon": "Images",
+    "variants": [
+      "grid",
+      "masonry",
+      "rounded"
+    ],
+    "tags": "",
+    "component": "ImageGalleryExample"
+  },
+  {
+    "id": "charts",
+    "name": "Charts",
+    "category": "Data display",
+    "description": "Responsive charts with selectable sample periods.",
+    "icon": "ChartNoAxesCombined",
+    "variants": [
+      "line",
+      "area",
+      "bar"
+    ],
+    "tags": "",
+    "component": "ChartsExample"
+  },
+  {
+    "id": "calendar",
+    "name": "Calendars",
+    "category": "Forms",
+    "description": "A navigable month grid with an explicit selected date.",
+    "icon": "CalendarRange",
+    "variants": [
+      "standard",
+      "bordered",
+      "soft"
+    ],
+    "tags": "",
+    "component": "CalendarExample"
+  },
+  {
+    "id": "tree-view",
+    "name": "Tree views",
+    "category": "Navigation",
+    "description": "Nested folders with expandable project structure.",
+    "icon": "FolderTree",
+    "variants": [
+      "standard",
+      "bordered",
+      "compact"
+    ],
+    "tags": "",
+    "component": "TreeViewExample"
+  },
+  {
+    "id": "code-block",
+    "name": "Code blocks",
+    "category": "Data display",
+    "description": "Readable code samples with a working copy action.",
+    "icon": "FileCode2",
+    "variants": [
+      "standard",
+      "terminal",
+      "bordered"
+    ],
+    "tags": "",
+    "component": "CodeBlockExample"
+  },
+  {
+    "id": "media-player",
+    "name": "Media players",
+    "category": "Marketing",
+    "description": "Native video and audio controls for local media previews.",
+    "icon": "Play",
+    "variants": [
+      "video",
+      "audio",
+      "compact"
+    ],
+    "tags": "",
+    "component": "MediaPlayerExample"
+  },
+  {
+    "id": "split-buttons",
+    "name": "Split buttons",
+    "component": "SplitButtonsExample",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "category": "Actions",
+    "description": "Interactive split buttons with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "split buttons"
+  },
+  {
+    "id": "profile-cards",
+    "name": "Profile cards",
+    "component": "ProfileCardsExample",
+    "variants": [
+      "standard",
+      "soft",
+      "split"
+    ],
+    "category": "Data display",
+    "description": "Interactive profile cards with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "profile cards"
+  },
+  {
+    "id": "data-grid",
+    "name": "Data grids",
+    "component": "DataGridExample",
+    "variants": [
+      "standard",
+      "compact",
+      "striped"
+    ],
+    "category": "Data display",
+    "description": "Interactive data grids with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "data grids"
+  },
+  {
+    "id": "chat-layout",
+    "name": "Chat layouts",
+    "component": "ChatLayoutExample",
+    "variants": [
+      "standard",
+      "compact",
+      "bubbles"
+    ],
+    "category": "Data display",
+    "description": "Interactive chat layouts with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "chat layouts"
+  },
+  {
+    "id": "tags",
+    "name": "Tags",
+    "component": "TagsExample",
+    "variants": [
+      "standard",
+      "soft",
+      "pill"
+    ],
+    "category": "Data display",
+    "description": "Interactive tags with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "tags"
+  },
+  {
+    "id": "notification-panels",
+    "name": "Notification panels",
+    "component": "NotificationPanelsExample",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "category": "Feedback",
+    "description": "Interactive notification panels with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "notification panels"
+  },
+  {
+    "id": "register-form",
+    "name": "Registration forms",
+    "component": "RegisterFormExample",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "category": "Forms",
+    "description": "Interactive registration forms with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "registration forms"
+  },
+  {
+    "id": "profile-form",
+    "name": "Profile forms",
+    "component": "ProfileFormExample",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "category": "Forms",
+    "description": "Interactive profile forms with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "profile forms"
+  },
+  {
+    "id": "settings-form",
+    "name": "Settings forms",
+    "component": "SettingsFormExample",
+    "variants": [
+      "standard",
+      "soft",
+      "compact"
+    ],
+    "category": "Forms",
+    "description": "Interactive settings forms with shared theme tokens and keyboard support.",
+    "icon": "Shapes",
+    "tags": "settings forms"
+  }
+]

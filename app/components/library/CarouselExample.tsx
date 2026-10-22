@@ -1,0 +1,6 @@
+'use client';
+import {useState,useRef,useEffect,useId} from 'react';
+import s from './CarouselExample.module.css';
+export default function CarouselExample({variant='cards'}:{variant?:string}){
+const [index,setIndex]=useState(0);const titles=['Make something great.','A system that feels like you.','Your next chapter starts here.'];return <section className={`${s.demo} ${s.slider} ${s[variant]}`} aria-label="Featured stories" aria-roledescription="carousel" tabIndex={0} onKeyDown={e=>{if(e.key==='ArrowRight')setIndex((index+1)%3);if(e.key==='ArrowLeft')setIndex((index+2)%3)}}><span className={s.badge}>STORY {index+1} / 3</span><div aria-live="polite"><h3>{titles[index]}</h3><p className={s.muted}>Thoughtful tools for your next big idea.</p></div><div className={s.row}><button className={s.button} aria-label="Previous slide" onClick={()=>setIndex((index+2)%3)}>←</button><div className={s.row} style={{gap:5}}>{titles.map((_,i)=><button key={i} aria-label={'Go to slide '+(i+1)} aria-current={index===i?'true':undefined} className={`${s.dot} ${index===i?s.active:''}`} onClick={()=>setIndex(i)}/>)}</div><button className={s.button} aria-label="Next slide" onClick={()=>setIndex((index+1)%3)}>→</button></div></section>;
+}

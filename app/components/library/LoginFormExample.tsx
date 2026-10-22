@@ -1,0 +1,6 @@
+'use client';
+import {useState,useRef,useEffect,useId} from 'react';
+import s from './LoginFormExample.module.css';
+export default function LoginFormExample({variant='standard'}:{variant?:string}){
+const [visible,setVisible]=useState(false);const [done,setDone]=useState(false);return <form className={`${s.demo} ${variant==='soft'?s.panel:s.stack} ${s[variant]}`} onSubmit={e=>{e.preventDefault();setDone(true)}}><h3 className={s.title}>Welcome back.</h3><label className={s.label}>Email<input type="email" className={s.input} required placeholder="you@example.com" autoComplete="off"/></label><label className={s.label} style={{margin:'12px 0'}}>Password<div className={s.row} style={{flexWrap:'nowrap'}}><input className={s.input} type={visible?'text':'password'} required minLength={8} placeholder="Use an example password" autoComplete="off"/><button type="button" className={s.button} onClick={()=>setVisible(!visible)}>{visible?'Hide':'Show'}</button></div></label><button className={`${s.button} ${s.primary}`} type="submit">Sign in</button><p role="status" className={s.muted}>{done?'Form validated. This preview does not authenticate or send credentials.':'Demo form · use sample details only.'}</p></form>;
+}

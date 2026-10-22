@@ -1,0 +1,43 @@
+{
+  "name": "forge-dashboard-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "node tests/run.cjs",
+    "test:exports": "node tests/upgrade.cjs",
+    "test:runtime": "node tests/real-preview.cjs",
+    "sync:templates": "node scripts/sync-templates.cjs",
+    "seed": "node --env-file=.env server/seed.mjs",
+    "migrate": "node --env-file=.env server/migrate.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@hookform/resolvers": "^5.7.1",
+    "axios": "^1.20.0",
+    "framer-motion": "^14.0.0",
+    "jszip": "^3.10.2",
+    "lucide-react": "^1.31.0",
+    "next": "16.3.4",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-hook-form": "^7.85.0",
+    "recharts": "^3.8.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "typescript": "5.9.3",
+    "vite": "^8.0.13"
+  }
+}

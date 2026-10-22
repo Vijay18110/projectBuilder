@@ -1,0 +1,2 @@
+.messages{height:350px;overflow:auto;display:flex;flex-direction:column;gap:12px;padding:15px 0}.bubble{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 12%,var(--muted)),color-mix(in srgb,var(--accent) 9%,var(--muted)));padding:14px;border-radius:var(--radius);max-width:85%}.bubble p{white-space:pre-wrap}.form{display:flex;gap:12px}.form input{flex:1;min-width:0}
+.split .bubble{border-left:3px solid var(--primary);border-radius:3px;max-width:100%}

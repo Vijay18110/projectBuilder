@@ -1,0 +1,6 @@
+import JSZip from 'jszip';
+import {z} from 'zod';
+import {themeSchema} from '../../lib/registry';
+import {componentFiles} from '../../lib/component-export';
+const schema=z.object({items:z.array(z.object({id:z.string().max(60),variant:z.string().max(30)})).min(1).max(80),theme:themeSchema});
+export async function POST(req:Request){if(req.headers.get('origin')&&req.headers.get('origin')!==new URL(req.url).origin)return Response.json({error:'Invalid origin'},{status:403});try{const text=await req.text();if(text.length>30000)return Response.json({error:'Selection is too large'},{status:413});const input=schema.parse(JSON.parse(text));const files=componentFiles(input.items,input.theme);const zip=new JSZip();for(const [path,value] of Object.entries(files)){if(path.startsWith('/')||path.split('/').includes('..'))throw new Error('Unsafe path');zip.file('forge-component-kit/'+path,value)}const data=await zip.generateAsync({type:'uint8array',compression:'DEFLATE',compressionOptions:{level:6}});return new Response(data as unknown as BodyInit,{headers:{'Content-Type':'application/zip','Content-Disposition':'attachment; filename="forge-component-kit.zip"','Cache-Control':'no-store'}})}catch{return Response.json({error:'Choose valid components and variants, then retry.'},{status:400})}}

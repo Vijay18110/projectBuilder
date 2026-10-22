@@ -1,0 +1,4 @@
+'use client';
+import {useEffect} from 'react';import {useForm} from 'react-hook-form';import {zodResolver} from '@hookform/resolvers/zod';import {exportSchema} from '../lib/registry';import s from './Studio.module.css';
+const schema=exportSchema.innerType().pick({name:true});
+export default function ProjectNameField({value,onChange}:{value:string;onChange:(name:string)=>void}){const {register,setValue,formState:{errors}}=useForm<{name:string}>({resolver:zodResolver(schema),mode:'onChange',defaultValues:{name:value}});useEffect(()=>setValue('name',value,{shouldValidate:true}),[value,setValue]);return <><input className={s.input} aria-label="Project name" aria-invalid={!!errors.name} {...register('name')} value={value} onChange={e=>{setValue('name',e.target.value,{shouldValidate:true});onChange(e.target.value)}} placeholder="my-dashboard"/>{errors.name&&<small role="alert">{errors.name.message}</small>}</>}

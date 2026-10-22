@@ -1,0 +1,85 @@
+{
+  "name": "forge-dashboard-studio",
+  "framework": "next",
+  "features": [
+    "overview",
+    "analytics",
+    "customers",
+    "products",
+    "orders",
+    "tables",
+    "forms",
+    "auth",
+    "team",
+    "chat",
+    "notifications",
+    "carousel",
+    "profile",
+    "theme"
+  ],
+  "theme": {
+    "primary": "#6258e8",
+    "accent": "#2da88b",
+    "font": "Inter",
+    "size": 14,
+    "radius": 12,
+    "density": "comfortable",
+    "mode": "light",
+    "sidebar": 232,
+    "motion": true,
+    "background": "#f7f8fc",
+    "surface": "#ffffff",
+    "text": "#23243a",
+    "mutedText": "#828397",
+    "border": "#e8e9f1",
+    "darkBackground": "#12131d",
+    "darkSurface": "#1b1d2b",
+    "darkText": "#eeeefa",
+    "lineHeight": 1.5,
+    "weight": 400,
+    "header": 78,
+    "maxWidth": 1580,
+    "shadow": "soft"
+  },
+  "variants": {
+    "buttons": [
+      "solid"
+    ],
+    "cards": [
+      "bordered"
+    ],
+    "tables": [
+      "standard"
+    ],
+    "inputs": [
+      "outlined"
+    ],
+    "icons": [
+      "rounded"
+    ],
+    "navigation": [
+      "expanded"
+    ],
+    "authentication": [
+      "centered"
+    ],
+    "dashboard": [
+      "analytics"
+    ],
+    "headers": [
+      "standard"
+    ],
+    "tabs": [
+      "underline"
+    ],
+    "badges": [
+      "soft"
+    ],
+    "carousel": [
+      "cards"
+    ],
+    "chat": [
+      "split"
+    ]
+  }
+}

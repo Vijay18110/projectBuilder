@@ -1,0 +1,4 @@
+'use client';
+import {useState,useRef} from 'react';
+import s from './TagsExample.module.css';
+export default function TagsExample({variant='standard'}:{variant?:string}){const [tags,setTags]=useState(['Design','React','Product']),[text,setText]=useState('');function add(){if(text.trim()&&!tags.includes(text.trim()))setTags([...tags,text.trim()]);setText('')}return <div className={s.demo}><div className={s.row}>{tags.map(x=><span className={[s.tag,s[variant]].join(' ')} key={x}>{x}<button aria-label={'Remove '+x} onClick={()=>setTags(tags.filter(v=>v!==x))}>×</button></span>)}</div><label className={s.label}>New tag<input className={s.input} value={text} onChange={e=>setText(e.target.value)} onKeyDown={e=>{if(e.key==='Enter'){e.preventDefault();add()}}}/></label><button className={s.button} onClick={add}>Add tag</button></div>}
