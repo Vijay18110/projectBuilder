@@ -8,7 +8,7 @@ export default function RunningPreview({config,page,openSignal=0,scope='local'}:
  const previewWindow=useRef<Window|null>(null),pendingLaunch=useRef(false),id=useRef(''),latest=useRef(''),queue=useRef(Promise.resolve()),previousFramework=useRef(config.framework),previousConfig=useRef('');
  const desired=JSON.stringify(config),route=page==='auth'?'/?preview-auth=1':page?'/'+page:'/',previewUrl=url+route+(route.includes('?')?'&':'?')+'revision='+version;
 
- useEffect(()=>{if(previousConfig.current&&previousConfig.current!==desired)setOpen(true);previousConfig.current=desired},[desired]);
+ useEffect(()=>{previousConfig.current=desired},[desired]);
  useEffect(()=>{if(openSignal)setOpen(true)},[openSignal]);
  useEffect(()=>{
   if(!open)return;
@@ -22,7 +22,7 @@ export default function RunningPreview({config,page,openSignal=0,scope='local'}:
      const response=await fetch('/api/preview',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id.current,config:JSON.parse(desired)}),signal:controller.signal});
      const data=await response.json();if(!response.ok)throw Error(data.error||'Unable to start preview');if(cancelled)return;
      setStatus('Starting '+(config.framework==='next'?'Next.js':'React + Vite')+'…');const started=Date.now();
-     while(!cancelled&&Date.now()-started<120000){
+     while(!cancelled&&Date.now()-started<300000){
       const check=await fetch('/api/preview?id='+id.current+'&page='+encodeURIComponent(page||''),{signal:controller.signal,cache:'no-store'}),result=await check.json();
       if(!check.ok)throw Error(result.error||'Preview unavailable');if(result.state==='error')throw Error(result.error);if(result.state==='expired')throw Error('Preview expired. Retry to restart.');
       if(result.state==='ready'){
@@ -42,6 +42,7 @@ export default function RunningPreview({config,page,openSignal=0,scope='local'}:
 
  useEffect(()=>{if(!open||!url)return;const timer=setInterval(()=>{void fetch('/api/preview?id='+id.current,{cache:'no-store'}).catch(()=>{})},60000);return()=>clearInterval(timer)},[open,url]);
  useEffect(()=>{if(!tabOpen)return;const timer=setInterval(()=>{if(!previewWindow.current||previewWindow.current.closed)setTabOpen(false)},1000);return()=>clearInterval(timer)},[tabOpen]);
+ useEffect(()=>{if(pendingLaunch.current&&previewWindow.current&&!previewWindow.current.closed)previewWindow.current.postMessage({type:'forge-preview-status',status,error},location.origin)},[status,error]);
  useEffect(()=>{if(url&&previewWindow.current&&!previewWindow.current.closed){try{previewWindow.current.location.href=previewUrl}catch{setError('Reopen the project tab to load your latest changes.')}}},[previewUrl,url]);
 
  function openProject(){

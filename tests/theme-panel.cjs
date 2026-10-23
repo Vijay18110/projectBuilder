@@ -1,0 +1,14 @@
+const fs=require('fs'),ts=require('typescript'),assert=require('node:assert/strict');
+require.extensions['.ts']=(m,p)=>m._compile(ts.transpileModule(fs.readFileSync(p,'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX,esModuleInterop:true}}).outputText,p);
+require.extensions['.tsx']=require.extensions['.ts'];require.extensions['.css']=m=>{m.exports={__esModule:true,default:new Proxy({},{get:(_,key)=>String(key)})}};
+const React=require('react'),{renderToStaticMarkup}=require('react-dom/server'),{defaultTheme}=require('../app/lib/registry.ts');
+const Panel=require('../app/components/ThemePanel.tsx').default,Studio=require('../app/components/ThemeStudio.tsx').default;
+const props={draft:{...defaultTheme,primary:'#16876a'},setDraft:()=>{},apply:()=>{},cancel:()=>{},notify:()=>{}};
+for(const Component of [Panel,Studio]){const html=renderToStaticMarkup(React.createElement(Component,props));assert.ok(html.includes('aria-label="Theme editor"'));assert.equal((html.match(/role="tab"/g)||[]).length,4);assert.ok(html.includes('aria-selected="true"'));assert.ok(html.includes('value="#16876a"'));assert.ok(html.includes('Dark Background'));assert.ok(html.includes('Apply theme'));assert.ok(html.includes('type="file"'));assert.ok(!html.includes('class="themeGrid"'))}
+const builder=fs.readFileSync('app/components/BuilderFlow.tsx','utf8');assert.ok(builder.includes('<ThemeDrawer open={'));assert.ok(builder.includes('layout={styles}'));assert.ok(builder.includes("inspector==='files'"));
+const Drawer=require('../app/components/ThemeDrawer.tsx').default;const drawer=renderToStaticMarkup(React.createElement(Drawer,{...props,open:false,onClose:()=>{}}));assert.ok(drawer.includes('<dialog'));assert.ok(drawer.includes('aria-label="Close theme editor"'));assert.ok(drawer.includes('aria-label="Theme editor"'));
+const {variants}=require('../app/lib/registry.ts'),Layout=require('../app/layouts/DashboardLayout.tsx').default;
+const header=renderToStaticMarkup(React.createElement(Layout,{page:'builder',user:null,onLogout:()=>{},settings:{name:'Studio',features:['overview','builder','theme'],variants:Object.fromEntries(Object.entries(variants).map(([key,options])=>[key,[options[0]]]))}},React.createElement('p',null,'Workspace')));
+assert.ok(header.includes('aria-label="Open Theme Studio"'));assert.ok(header.includes('aria-haspopup="dialog"'));assert.ok(!header.includes('href="/?page=theme"'));
+assert.ok(builder.includes("addEventListener('forge-open-builder-theme'"));
+console.log('Shared theme editor: studio and panel render, theme values, accessible tabs, import control, and builder layout binding passed.');

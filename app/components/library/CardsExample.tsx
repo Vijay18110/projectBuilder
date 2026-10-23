@@ -1,6 +1,7 @@
 'use client';
-import {useState,useRef,useEffect,useId} from 'react';
+import {useState} from 'react';
 import s from './CardsExample.module.css';
 export default function CardsExample({variant='bordered'}:{variant?:string}){
-const [open,setOpen]=useState(false);return <article className={`${s.demo} ${s.panel} ${s[variant]}`}><span className={s.badge}>Design system</span><h3 className={s.title} style={{marginTop:15}}>Thoughtfully connected.</h3><p className={s.muted}>A flexible foundation for your next website.</p>{open&&<p className={s.muted}>Your colors, spacing, and typography carry through every surface.</p>}<button className={`${s.button} ${s.soft}`} onClick={()=>setOpen(!open)}>{open?'Show less':'Read more'} →</button></article>;
+ const [saved,setSaved]=useState(false);
+ return <article className={`${s.demo} ${s.panel} ${s[variant]}`}><div className={s.artwork}><span className={s.orbit}/><span className={s.orbit}/><span className={s.artworkLabel}>FORGE / COLLECTION 001</span></div><div className={s.content}><div className={s.meta}><span className={s.badge}>Design resources</span><span>6 min read</span></div><h3 className={s.title}>Good design starts with a solid foundation.</h3><p className={s.muted}>A considered collection of patterns to help your team build with clarity and confidence.</p><footer className={s.cardFooter}><div className={s.author}><span className={s.avatar}>AC</span><span><strong>Alex Chen</strong><small>Product designer</small></span></div><button className={s.save} aria-pressed={saved} onClick={()=>setSaved(!saved)}>{saved?'✓ Saved':'+ Save'}</button></footer></div></article>
 }
