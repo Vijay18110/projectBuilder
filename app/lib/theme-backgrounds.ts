@@ -1,5 +1,5 @@
 /** Apply the same theme surfaces to studio CSS, component kits, and app exports.
- * Only background declarations are changed: color tokens remain usable by borders,
+ * Surface effects are shared; color tokens remain usable by borders,
  * text, charts, and color-mix(). Existing artwork and semantic colors stay intact.
  */
 export function themeBackgrounds(css:string,path=''):string {
@@ -21,6 +21,8 @@ export function themeBackgrounds(css:string,path=''):string {
  if(!targets.length)return themed;
  const selectors=targets.map(name=>'.'+name+'.'+name).join(',');
  const scope='background:var(--design-surface,var(--surface));color:var(--text);box-shadow:var(--design-shadow,var(--shadow));backdrop-filter:var(--design-blur,none);-webkit-backdrop-filter:var(--design-blur,none);border-color:var(--border);';
+ const flat=targets.filter(name=>['header','footer','sidebar','previewNav','nav','side'].includes(name)).map(name=>'.'+name+'.'+name).join(',');
+ const layout=flat?flat+'{box-shadow:none}':'';
  const sidebar=targets.includes('sidebar')?'.sidebar.sidebar .brand{color:var(--text)}.sidebar.sidebar nav a{color:var(--secondary)}.sidebar.sidebar nav a[aria-current=page]{color:var(--primary)}':'';
- return themed+'\n/* White layout surfaces */'+selectors+'{'+scope+'}'+sidebar+'/* End white layout surfaces */';
+ return themed+'\n/* White layout surfaces */'+selectors+'{'+scope+'}'+layout+sidebar+'/* End white layout surfaces */';
 }
