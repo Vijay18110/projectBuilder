@@ -63,6 +63,10 @@ npm run dev
 
 Register and verify the first account. Set SEED_USER_EMAIL to that account in .env and run `npm run seed` for clean sample records. `npm run migrate` applies the idempotent schema initialization. Run `npm run build` and `npm start` for production. Configure APP_ORIGIN and an email provider, and use HTTPS.
 
+## Brand assets
+
+The studio uses an original Forge F mark across navigation, the component library, and Theme Studio. Vector assets are in `public/forge-mark.svg` and `public/forge-logo.svg`; browser and device icons are `public/favicon.svg`, `public/apple-touch-icon.png`, and `public/forge-icon.png`. The in-app mark follows the selected primary and accent colors.
+
 ## Source architecture
 
 - app/components/WorkspaceShell.tsx: studio controller and connected navigation.

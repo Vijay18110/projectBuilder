@@ -23,6 +23,7 @@ export function themeBackgrounds(css:string,path=''):string {
  const scope='background:var(--design-surface,var(--surface));color:var(--text);box-shadow:var(--design-shadow,var(--shadow));backdrop-filter:var(--design-blur,none);-webkit-backdrop-filter:var(--design-blur,none);border-color:var(--border);';
  const flat=targets.filter(name=>['header','footer','sidebar','previewNav','nav','side'].includes(name)).map(name=>'.'+name+'.'+name).join(',');
  const layout=flat?flat+'{box-shadow:none}':'';
+ const controls=css.includes('.demo')?'.demo{font-family:var(--font);font-size:var(--size);line-height:var(--line-height);font-weight:var(--font-weight)}.demo .panel{padding:var(--space)}.demo .button:not(.pill):not(.circle),.demo .input,.demo .panel{border-radius:var(--radius);border-width:var(--border-width,1px)}.demo .button:not(.ghost):not(.outline){box-shadow:var(--design-shadow,var(--shadow))}.demo .input{box-shadow:var(--design-input-shadow,none)}':'';
  const sidebar=targets.includes('sidebar')?'.sidebar.sidebar .brand{color:var(--text)}.sidebar.sidebar nav a{color:var(--secondary)}.sidebar.sidebar nav a[aria-current=page]{color:var(--primary)}':'';
- return themed+'\n/* White layout surfaces */'+selectors+'{'+scope+'}'+layout+sidebar+'/* End white layout surfaces */';
+ return themed+'\n/* White layout surfaces */'+selectors+'{'+scope+'}'+layout+controls+sidebar+'/* End white layout surfaces */';
 }
