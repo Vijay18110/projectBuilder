@@ -4,7 +4,7 @@ require.extensions['.tsx']=require.extensions['.ts'];require.extensions['.css']=
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server'),{defaultTheme}=require('../app/lib/registry.ts');
 const Panel=require('../app/components/ThemePanel.tsx').default,Studio=require('../app/components/ThemeStudio.tsx').default;
 const props={draft:{...defaultTheme,primary:'#16876a'},setDraft:()=>{},apply:()=>{},cancel:()=>{},notify:()=>{}};
-for(const Component of [Panel,Studio]){const html=renderToStaticMarkup(React.createElement(Component,props));assert.ok(html.includes('aria-label="Theme editor"'));assert.equal((html.match(/role="tab"/g)||[]).length,4);assert.ok(html.includes('aria-selected="true"'));assert.ok(html.includes('value="#16876a"'));assert.ok(html.includes('Dark Background'));assert.ok(html.includes('Apply theme'));assert.ok(html.includes('Whole project design style'));assert.ok(html.includes('Glassmorphism'));assert.ok(html.includes('Neumorphism'));assert.ok(html.includes('Claymorphism'));assert.ok(html.includes('Apply style to project'));assert.ok(html.includes('type="file"'));assert.ok(!html.includes('class="themeGrid"'))}
+for(const Component of [Panel,Studio]){const html=renderToStaticMarkup(React.createElement(Component,props));assert.ok(html.includes('aria-label="Theme editor"'));assert.equal((html.match(/role="tab"/g)||[]).length,4);assert.ok(html.includes('aria-selected="true"'));assert.ok(html.includes('value="#16876a"'));assert.ok(html.includes('Dark Background'));assert.ok(html.includes('Apply theme'));assert.ok(html.includes('Primary hex'));assert.ok(html.includes('Main actions, active navigation and focus rings'));assert.ok(html.includes('Readability on cards'));assert.ok(html.includes('Revenue line')||Component===Panel);assert.ok(html.includes('type="file"'));assert.ok(!html.includes('class="themeGrid"'))}
 const builder=fs.readFileSync('app/components/BuilderFlow.tsx','utf8');assert.ok(builder.includes('<ThemeDrawer open={'));assert.ok(builder.includes('layout={styles}'));assert.ok(builder.includes("inspector==='files'"));
 const Drawer=require('../app/components/ThemeDrawer.tsx').default;const drawer=renderToStaticMarkup(React.createElement(Drawer,{...props,open:false,onClose:()=>{}}));assert.ok(drawer.includes('<dialog'));assert.ok(drawer.includes('aria-modal="false"'));assert.ok(drawer.includes('aria-label="Close theme editor"'));assert.ok(drawer.includes('aria-label="Theme editor"'));
 const {variants}=require('../app/lib/registry.ts'),Layout=require('../app/layouts/DashboardLayout.tsx').default;
@@ -12,3 +12,18 @@ const header=renderToStaticMarkup(React.createElement(Layout,{page:'builder',use
 assert.ok(header.includes('aria-label="Open Theme Studio"'));assert.ok(header.includes('aria-haspopup="dialog"'));assert.ok(!header.includes('href="/?page=theme"'));
 assert.ok(builder.includes("addEventListener('forge-open-builder-theme'"));
 console.log('Shared theme editor: studio and panel render, theme values, accessible tabs, import control, and builder layout binding passed.');
+
+const {contrastRatio,themeContrast}=require('../app/lib/theme-colors.ts');
+assert.equal(contrastRatio('#ffffff','#000000'),21);
+assert.equal(contrastRatio('#6258e8','#6258e8'),1);
+assert.ok(themeContrast(defaultTheme,false)[0].ratio>=4.5);
+assert.ok(themeContrast(defaultTheme,true)[0].ratio>=4.5);
+const {tokens}=require('../app/lib/registry.ts');
+assert.ok(tokens({...defaultTheme,primary:'#ffff00'}).includes('--on-primary:#000000'));
+assert.ok(tokens({...defaultTheme,primary:'#000088'}).includes('--on-primary:#ffffff'));
+assert.ok(tokens({...defaultTheme,mode:'dark',darkBackground:'#101923',darkBorder:'#334455'}).includes('--muted:color-mix(in srgb,#101923 85%,#334455)'));
+const source=fs.readFileSync('app/components/ThemePanel.tsx','utf8');
+assert.ok(source.includes('chartColor:primary,chartSecondary:accent'));
+const preview=renderToStaticMarkup(React.createElement(Studio,props));
+assert.ok(preview.includes('stroke="var(--chart-primary,var(--primary))"'));
+assert.ok(preview.includes('fill="var(--chart-secondary,var(--accent))"'));
