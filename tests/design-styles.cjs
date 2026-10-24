@@ -8,7 +8,7 @@ const legacy={...defaultTheme};delete legacy.designStyle;assert.equal(themeSchem
 for(const {id} of designStyles){
  const theme=selectDesignStyle({...defaultTheme,primary:'#16876a',mode:'system'},id);
  assert.equal(theme.primary,'#16876a');assert.equal(theme.mode,'system');assert.equal(themeSchema.parse(JSON.parse(JSON.stringify(theme))).designStyle,id);
- const css=tokens(theme);assert.ok(!css.includes('${'),'CSS must interpolate dark palette values');assert.ok(tokens({...theme,mode:'dark'}).includes('--bg:'+theme.darkBackground));assert.ok(css.includes('--design-surface:'));assert.ok(css.includes('--design-shadow:'));assert.ok(css.includes('@media(prefers-color-scheme:dark)'));
+ const css=tokens(theme);assert.ok(!css.includes('${'),'CSS must interpolate dark palette values');assert.ok(tokens({...theme,mode:'dark'}).includes('--bg:'+theme.darkBackground));assert.ok(css.includes('--design-surface:'));assert.ok(css.includes(':root[data-mode]'),'Saved mode attributes must not override theme tokens');assert.ok(css.includes('color-scheme:light dark'),'System mode must theme native controls');assert.ok(css.includes('--design-shadow:'));assert.ok(css.includes('@media(prefers-color-scheme:dark)'));
  for(const framework of ['next','react']){
   const config=exportSchema.parse({name:'style-check',framework,features:['overview'],theme,variants:Object.fromEntries(Object.entries(variants).map(([key,values])=>[key,[values[0]]]))});
   const files=generateProject(config),allCSS=Object.entries(files).filter(([name])=>name.endsWith('.css')).map(([,content])=>content).join('\n');
