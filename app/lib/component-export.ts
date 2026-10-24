@@ -1,3 +1,4 @@
+import {datePickerSource,datePickerCSS} from './datepicker-source';
 import {selectVariantCSS} from './variant-css';
 import {themeBackgrounds} from './theme-backgrounds';
 import {dropdownCSS} from './templates/dropdowns';
@@ -19,4 +20,4 @@ files['.gitignore']='node_modules\ndist\n';files['theme.json']=JSON.stringify(th
 files['README.md']=`# Forge Component Kit\n\n${chosen.length} independent React components, each with its own CSS Module. Exported with your applied theme.\n\n## Run\n\nRequires Node.js 22.13+.\n\n1. npm install\n2. npm run dev\n3. npm run build to verify production output\n\n## Use in Next.js\n\nCopy a component TSX file and its matching CSS Module into your project. The client directive is included. Copy the CSS design tokens from src/globals.css into your global stylesheet and load Inter or your preferred font. The components require React only.\n\n## Included\n\n${chosen.map(x=>'- '+x.name+' — default: '+x.variant+'; available: '+x.variants.join(', ')).join('\n')}\n\nThese are interactive UI examples. Forms validate locally and never submit credentials or messages. Commerce previews do not process payments. Upload previews select and validate local files but do not upload them. Integrate your own backend when using these interfaces in a product. Source contains clean sample content only.\n`;
 files['src/globals.css']+='\n'+dropdownCSS;
 for(const path of Object.keys(files))if(path.endsWith('.css'))files[path]=themeBackgrounds(files[path],path);
-return files;}
+if(chosen.some(item=>item.id==='date-picker')){files['src/DatePicker.tsx']=datePickerSource;files['src/DatePicker.module.css']=datePickerCSS;}return files;}

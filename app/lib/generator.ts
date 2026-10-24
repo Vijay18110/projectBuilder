@@ -1,3 +1,4 @@
+import {datePickerSource,datePickerCSS} from './datepicker-source';
 import {applicationConfig} from './project-types';
 import {selectVariantCSS} from './variant-css';
 import {enhanceProject} from './project-enhancements';
@@ -65,4 +66,5 @@ if(chosen.length){deps['lucide-react']='^1.31.0';const pkg=JSON.parse(files['pac
 app('components/PageComposition.module.css','.component{padding:var(--space);margin-bottom:20px;border:var(--border-width,1px) solid var(--border);border-radius:var(--radius);background:var(--surface)}');app('components/PageComposition.tsx',"'use client';\nimport s from './PageComposition.module.css';\n"+chosen.map(x=>"import "+x.component+" from './composed/"+x.component+"';").join('\n')+"\nconst components:Record<string,React.ComponentType<{variant?:string}>>={"+chosen.map(x=>JSON.stringify(x.id)+':'+x.component).join(',')+"};\nconst pages:Record<string,{id:string;variant:string}[]>="+json({...c.pages,auth:(c.pages.auth||[]).filter(row=>!['login-form','register-form'].includes(row.id))})+";\nexport default function PageComposition({page}:{page:string}){return <>{(pages[page]||[]).map((item,index)=>{const Component=components[item.id];return Component?<section key={index} className={s.component}><Component variant={item.variant}/></section>:null})}</>}");
 files[appPath]=files[appPath].replace("'use client';","'use client';\nimport PageComposition from './components/PageComposition';").replace('<Suspense fallback=', '<PageComposition page={page}/><Suspense fallback=');
 }
+app('components/DatePicker.tsx',datePickerSource);app('components/DatePicker.module.css',datePickerCSS);
 return enhanceProject(files,c,studioSources);}
