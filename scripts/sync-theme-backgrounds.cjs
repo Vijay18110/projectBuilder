@@ -7,4 +7,4 @@ visit('app');
 const file='app/lib/component-catalog.json',catalog=JSON.parse(fs.readFileSync(file,'utf8'));
 for(const item of catalog){const stylesheet=path.join('app','components','library',item.component+'.module.css');item.css=fs.existsSync(stylesheet)?fs.readFileSync(stylesheet,'utf8'):themeBackgrounds(item.css,item.component+'.module.css');const source=path.join('app','components','library',item.component+'.tsx');if(fs.existsSync(source))item.source=fs.readFileSync(source,'utf8')}
 fs.writeFileSync(file,JSON.stringify(catalog,null,2)+'\n');
-console.log('Theme gradients synchronized across '+changed+' stylesheets and '+catalog.length+' component families.');
+console.log('Theme surfaces synchronized across '+changed+' stylesheets and '+catalog.length+' component families.');

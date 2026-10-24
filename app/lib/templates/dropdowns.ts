@@ -5,7 +5,7 @@ export const dropdownCSS=String.raw`
 html,
 * {
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--primary) 58%, var(--border)) color-mix(in srgb, var(--surface) 72%, transparent);
+  scrollbar-color: color-mix(in srgb, var(--secondary) 25%, var(--border)) color-mix(in srgb, var(--surface) 72%, transparent);
 }
 *::-webkit-scrollbar {
   width: 8px;
@@ -19,11 +19,11 @@ html,
   min-height: 36px;
   border: 2px solid transparent;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary) 58%, var(--accent))) border-box;
+  background: color-mix(in srgb, var(--secondary) 25%, var(--border)) border-box;
   background-clip: padding-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 86%, var(--text)), color-mix(in srgb, var(--accent) 72%, var(--primary))) border-box;
+  background: color-mix(in srgb, var(--secondary) 60%, var(--border)) border-box;
 }
 *::-webkit-scrollbar-corner {
   background: transparent;
@@ -34,9 +34,9 @@ select:not([multiple]):not([size]) {
   padding: 10px 14px;
   border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
   border-radius: max(10px, var(--radius));
-  background: linear-gradient(120deg, color-mix(in srgb, var(--primary) 9%, var(--surface)), color-mix(in srgb, var(--accent) 6%, var(--surface)));
+  background: var(--surface);
   color: var(--text);
-  box-shadow: 0 2px 5px color-mix(in srgb, var(--primary) 5%, transparent);
+  box-shadow: var(--design-input-shadow,none);
   font: inherit;
   font-weight: 500;
   cursor: pointer;
@@ -44,7 +44,7 @@ select:not([multiple]):not([size]) {
 }
 select:not([multiple]):not([size]):hover:not(:disabled) {
   border-color: color-mix(in srgb, var(--primary) 58%, var(--border));
-  box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 12%, transparent);
+  box-shadow: var(--design-input-shadow,none);
 }
 select:not([multiple]):not([size]):focus-visible {
   outline: 2px solid var(--primary);
@@ -83,7 +83,7 @@ select option {
     margin-block: 7px;
     border: 1px solid color-mix(in srgb, var(--primary) 25%, var(--border));
     border-radius: max(12px, var(--radius));
-    background: linear-gradient(145deg, color-mix(in srgb, var(--primary) 5%, var(--surface)), var(--surface) 55%, color-mix(in srgb, var(--accent) 5%, var(--surface)));
+    background: var(--surface);
     color: var(--text);
     box-shadow: 0 14px 40px color-mix(in srgb, var(--text) 14%, transparent), 0 3px 10px color-mix(in srgb, var(--primary) 10%, transparent);
     max-height: min(340px, 60dvh);
@@ -110,12 +110,12 @@ select option {
   }
   select:not([multiple]):not([size]) option:hover,
   select:not([multiple]):not([size]) option:focus-visible {
-    background: linear-gradient(110deg, color-mix(in srgb, var(--primary) 12%, var(--surface)), color-mix(in srgb, var(--accent) 9%, var(--surface)));
+    background: var(--muted);
     outline: none;
     border-color: color-mix(in srgb, var(--primary) 25%, transparent);
   }
   select:not([multiple]):not([size]) option:checked {
-    background: linear-gradient(110deg, color-mix(in srgb, var(--primary) 23%, var(--surface)), color-mix(in srgb, var(--accent) 18%, var(--surface)));
+    background: color-mix(in srgb, var(--primary) 9%, var(--surface));
     border-color: color-mix(in srgb, var(--primary) 32%, var(--border));
     font-weight: 600;
   }

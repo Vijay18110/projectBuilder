@@ -5,15 +5,13 @@
 export function themeBackgrounds(css:string,path=''):string {
  css=css.replace(/\n\/\* White layout surfaces \*\/[\s\S]*?\/\* End white layout surfaces \*\//g,'');
  if(/(?:^|[\\/])marketing[\\/]/.test(path))return css;
- const surfaces:Record<string,string>={
-  surface:'linear-gradient(120deg,color-mix(in srgb,var(--primary) 8%,var(--surface)),color-mix(in srgb,var(--accent) 6%,var(--surface)))',
-  muted:'linear-gradient(120deg,color-mix(in srgb,var(--primary) 12%,var(--muted)),color-mix(in srgb,var(--accent) 9%,var(--muted)))',
-  bg:'linear-gradient(135deg,color-mix(in srgb,var(--primary) 4%,var(--bg)),var(--bg) 50%,color-mix(in srgb,var(--accent) 4%,var(--bg)))',
-  primary:'linear-gradient(115deg,var(--primary),color-mix(in srgb,var(--primary) 82%,var(--accent)))',
-  accent:'linear-gradient(115deg,var(--accent),color-mix(in srgb,var(--accent) 82%,var(--primary)))',
- };
- const themed=css.replace(/\bbackground\s*:\s*var\(--(surface|muted|bg|primary|accent)\)(?=\s*[;}])/g,(_,key:string)=>'background:'+surfaces[key])
-  .replace(/\bbackground\s*:\s*(color-mix\(in srgb,\s*var\(--primary\)\s+(\d+(?:\.\d+)?)%,\s*var\(--surface\)\))(?=\s*[;}])/g,(_,color:string,amount:string)=>'background:linear-gradient(120deg,'+color+',color-mix(in srgb,var(--accent) '+amount+'%,var(--surface)))');
+ // Normalize the old blanket gradients before applying the selected surface style.
+ // Keep deliberate artwork (charts, hero sections and gradient variants) intact.
+ const themed=css
+  .replace(/linear-gradient\(120deg,color-mix\(in srgb,var\(--primary\) 8%,var\(--surface\)\),color-mix\(in srgb,var\(--accent\) 6%,var\(--surface\)\)\)/g,'var(--surface)')
+  .replace(/linear-gradient\(120deg,color-mix\(in srgb,var\(--primary\) 12%,var\(--muted\)\),color-mix\(in srgb,var\(--accent\) 9%,var\(--muted\)\)\)/g,'var(--muted)')
+  .replace(/linear-gradient\(135deg,color-mix\(in srgb,var\(--primary\) 4%,var\(--bg\)\),var\(--bg\) 50%,color-mix\(in srgb,var\(--accent\) 4%,var\(--bg\)\)\)/g,'var(--bg)')
+  .replace(/linear-gradient\(120deg,(color-mix\(in srgb,var\(--primary\) (\d+(?:\.\d+)?)%,var\(--surface\)\)),color-mix\(in srgb,var\(--accent\) \2%,var\(--surface\)\)\)/g,'$1');
  const names=['card','panel','header','footer','sidebar','product','chart','recent','previewNav','menu'];
  if(/(?:^|[\\/])Card\.module\.css$/.test(path))names.push('base');
  if(path.includes('NavbarExample'))names.push('nav');

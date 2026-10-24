@@ -17,3 +17,11 @@ for(const {id} of designStyles){
 }
 const surfaces=themeBackgrounds('.card{background:var(--surface)}.sidebar{background:var(--surface)}');assert.ok(!surfaces.includes('--surface:#fff'));assert.ok(surfaces.includes('background:var(--design-surface,var(--surface))'));assert.equal(themeBackgrounds(surfaces),surfaces);
 console.log('Design styles: legacy themes, validation, palette preservation, JSON round trips, both framework exports, and shared surfaces passed.');
+// Legacy surface gradients must normalize in both the studio and future exports.
+const legacyGradient='linear-gradient(120deg,color-mix(in srgb,var(--primary) 8%,var(--surface)),color-mix(in srgb,var(--accent) 6%,var(--surface)))';
+const artwork='linear-gradient(130deg,var(--primary),var(--accent))';
+const clean=themeBackgrounds('.field{background:'+legacyGradient+'}.hero{background:'+artwork+'}.card{background:var(--surface)}');
+assert.ok(!clean.includes(legacyGradient));
+assert.ok(clean.includes('.field{background:var(--surface)}'));
+assert.ok(clean.includes(artwork),'Intentional gradient artwork must survive surface cleanup');
+assert.equal(themeBackgrounds(clean),clean,'Surface synchronization must be idempotent');
