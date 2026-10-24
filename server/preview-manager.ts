@@ -3,6 +3,7 @@ import {createServer} from 'node:net';
 import {mkdir,writeFile,readFile,unlink,rm} from 'node:fs/promises';
 import {resolve,dirname,relative,isAbsolute} from 'node:path';
 import {createRequire} from 'node:module';
+import {previewOrigin} from '../app/lib/preview-url';
 import {generatePreviewProject} from '../app/lib/preview-project';
 import {ExportConfig} from '../app/lib/registry';
 import {readStudioSources} from './studio-sources';
@@ -22,7 +23,7 @@ async function stop(preview:Preview){
 }
 export async function removePreview(owner:string,id:string){const p=previews.get(id);if(!p||p.owner!==owner)return;previews.delete(id);await p.queue.catch(()=>{});await stop(p);await rm(within(root,id),{recursive:true,force:true}).catch(()=>{});}
 if(!globals.forgePreviewTimer){globals.forgePreviewTimer=setInterval(()=>{for(const p of previews.values())if(Date.now()-p.touched>15*60_000)void removePreview(p.owner,p.id)},60_000);globals.forgePreviewTimer.unref();}
-export async function updatePreview(owner:string,id:string,config:ExportConfig){
+export async function updatePreview(owner:string,id:string,config:ExportConfig,studioOrigin?:string){
  let preview=previews.get(id);
  if(preview&&preview.owner!==owner)throw Error('Preview not found');
  if(!preview){
@@ -33,10 +34,10 @@ export async function updatePreview(owner:string,id:string,config:ExportConfig){
  }
  const p=preview;p.touched=Date.now();
  const operation=p.queue.catch(()=>{}).then(async()=>{
-  const restart=p.framework!==config.framework||!p.process||p.failed||p.version!==4;
-  if(restart){await stop(p);p.framework=config.framework;p.port=await freePort();p.failed=false;p.log='';p.version=4;}
+  const restart=p.framework!==config.framework||!p.process||p.failed||p.version!==5;
+  if(restart){await stop(p);p.framework=config.framework;p.port=await freePort();p.failed=false;p.log='';p.version=5;}
   const codespace=process.env.CODESPACE_NAME,domain=process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN||'app.github.dev';
-  const publicOrigin=codespace&&/^[a-z0-9-]+$/.test(codespace)&&/^[a-z0-9.-]+$/.test(domain)?'https://'+codespace+'-'+p.port+'.'+domain:'http://localhost:'+p.port;
+  const publicOrigin=studioOrigin?previewOrigin(studioOrigin,p.port):codespace&&/^[a-z0-9-]+$/.test(codespace)&&/^[a-z0-9.-]+$/.test(domain)?'https://'+codespace+'-'+p.port+'.'+domain:'http://localhost:'+p.port;
   const publicHost=new URL(publicOrigin).hostname;
   const files=generatePreviewProject(config,readStudioSources());
   // Both compilers use the studio's installed packages; no install runs per change.
