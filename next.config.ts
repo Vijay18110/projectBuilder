@@ -7,7 +7,7 @@ const config:NextConfig={
     return [
       {
         source: '/:page(overview|analytics|customers|products|orders|tables|forms|team|chat|notifications|carousel|profile|theme|tasks|calendar|help|builder|components)',
-        destination: '/?page=:page',
+        destination: '/dashboard?page=:page',
       },
     ];
   },

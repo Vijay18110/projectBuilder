@@ -12,7 +12,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000. The studio opens directly in Project Builder without login, registration, email verification, or session cookies. The legacy /login URL redirects to the builder. Studio settings and business data use one shared workspace on this instance; existing account databases are retained, and old account records are not automatically copied into the shared workspace. Authentication remains an optional feature for generated applications.
+Open http://localhost:3000 for the marketing homepage, /about for the product story, and /docs for documentation. Open /dashboard for Project Builder. The studio opens without login, registration, email verification, or session cookies. The legacy /login URL redirects to the builder. Studio settings and business data use one shared workspace on this instance; existing account databases are retained, and old account records are not automatically copied into the shared workspace. Authentication remains an optional feature for generated applications.
 
 Codespaces and reverse-proxy browser URLs are supported for studio saves, exports, and preview controls. Set APP_ORIGIN to the external browser origin when the proxy does not provide forwarded host/protocol headers.
 
@@ -96,3 +96,7 @@ The regular suite covers backend flows, account isolation, role checks, recovery
 ## Hosting
 
 Use persistent storage for data/workspace.sqlite and back it up. The preview runner needs a local Node host that can spawn processes and listen on loopback ports. The studio runs one active project for its shared workspace, with a 15-minute idle timeout. A remotely hosted or serverless deployment needs a routed preview service; exported applications run independently of that studio service. Chat uses polling rather than WebSockets.
+
+## Marketing pages and SEO
+
+Home (/), About (/about), and Docs (/docs) render their content on the server with unique titles, descriptions, canonical URLs, Open Graph/Twitter metadata, and structured data. Public pages are listed in /sitemap.xml; /robots.txt excludes studio and API routes. Dashboard metadata is noindex. Set NEXT_PUBLIC_SITE_URL to the public website origin before the production build. The studio lives at /dashboard; legacy /?page=... URLs redirect with their parameters preserved.

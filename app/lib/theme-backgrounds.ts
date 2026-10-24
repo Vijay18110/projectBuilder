@@ -4,6 +4,7 @@
  */
 export function themeBackgrounds(css:string,path=''):string {
  css=css.replace(/\n\/\* White layout surfaces \*\/[\s\S]*?\/\* End white layout surfaces \*\//g,'');
+ if(/(?:^|[\\/])marketing[\\/]/.test(path))return css;
  const surfaces:Record<string,string>={
   surface:'linear-gradient(120deg,color-mix(in srgb,var(--primary) 8%,var(--surface)),color-mix(in srgb,var(--accent) 6%,var(--surface)))',
   muted:'linear-gradient(120deg,color-mix(in srgb,var(--primary) 12%,var(--muted)),color-mix(in srgb,var(--accent) 9%,var(--muted)))',
