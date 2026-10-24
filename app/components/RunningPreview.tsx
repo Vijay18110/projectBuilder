@@ -46,6 +46,8 @@ export default function RunningPreview({config,page,openSignal=0,scope='local'}:
  useEffect(()=>{if(pendingLaunch.current&&previewWindow.current&&!previewWindow.current.closed)previewWindow.current.postMessage({type:'forge-preview-status',status,error},location.origin)},[status,error]);
  useEffect(()=>{if(url&&previewWindow.current&&!previewWindow.current.closed){try{previewWindow.current.location.href=previewUrl}catch{setError('Reopen the project tab to load your latest changes.')}}},[previewUrl,url]);
 
+ // Appearance changes should reach the open project before its source rebuild.
+ useEffect(()=>{const target=previewWindow.current;if(!url||!target||target.closed)return;const parsed=exportSchema.safeParse(config);if(parsed.success)target.postMessage({type:'forge-preview-theme',theme:parsed.data.theme},new URL(url).origin)},[config.theme,url,tabOpen]);
  function openProject(){
   if(!id.current){id.current=sessionStorage.getItem('forge-preview:'+scope)||crypto.randomUUID();sessionStorage.setItem('forge-preview:'+scope,id.current)}
   pendingLaunch.current=true;setOpen(true);setRetry(value=>value+1);previewWindow.current=window.open('/preview-loading','_blank');

@@ -749,62 +749,6 @@
     "component": "TimelineExample"
   },
   {
-    "id": "product-card",
-    "name": "Product cards",
-    "category": "Commerce",
-    "description": "Product details, pricing, and local cart feedback.",
-    "icon": "ShoppingBag",
-    "variants": [
-      "standard",
-      "horizontal",
-      "minimal"
-    ],
-    "tags": "",
-    "component": "ProductCardExample"
-  },
-  {
-    "id": "quantity",
-    "name": "Quantity selectors",
-    "category": "Commerce",
-    "description": "Bounded item quantities with a visible total.",
-    "icon": "BetweenHorizontalStart",
-    "variants": [
-      "outline",
-      "filled",
-      "pill"
-    ],
-    "tags": "",
-    "component": "QuantityExample"
-  },
-  {
-    "id": "rating",
-    "name": "Star ratings",
-    "category": "Commerce",
-    "description": "Interactive, accessible feedback scores.",
-    "icon": "Star",
-    "variants": [
-      "standard",
-      "soft",
-      "large"
-    ],
-    "tags": "",
-    "component": "RatingExample"
-  },
-  {
-    "id": "cart-summary",
-    "name": "Cart summaries",
-    "category": "Commerce",
-    "description": "A clear checkout summary with local quantity controls.",
-    "icon": "ShoppingCart",
-    "variants": [
-      "standard",
-      "soft",
-      "compact"
-    ],
-    "tags": "",
-    "component": "CartSummaryExample"
-  },
-  {
     "id": "cookie-banner",
     "name": "Cookie banners",
     "category": "Feedback",

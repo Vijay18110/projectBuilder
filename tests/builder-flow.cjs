@@ -7,10 +7,13 @@ for(const framework of ['react','next']){
  const prefix=framework==='react'?'src/':'';
  const base={name:'builder-flow',framework,features:builderFeatures([]),theme:r.defaultTheme,variants:Object.fromEntries(Object.entries(r.variants).map(([k,v])=>[k,[v[0]]]))};
  const files=generateProject(r.exportSchema.parse(base));for(const id of defaultDashboardPages)assert.ok(files[prefix+'features/Feature'+id[0].toUpperCase()+id.slice(1)+'.tsx']);
- const shop=generateProject(r.exportSchema.parse({...base,projectType:'ecommerce',features:['overview'],storefrontPages:['shop'],pages:{overview:[]}}));assert.ok(shop[prefix+'App.tsx'].includes("enabled.includes('orders')&&<button"));assert.deepEqual(JSON.parse(shop['project.config.json']).storefrontPages,['shop']);assert.ok(!shop['app/cart/page.tsx']);
- const full=generateProject(r.exportSchema.parse({...base,projectType:'ecommerce',features:['overview'],storefrontPages:['shop','cart','orders']}));if(framework==='next'){assert.ok(full['app/cart/page.tsx']);assert.ok(full['app/orders/page.tsx'])}
 }
 const React=require('react'),{renderToStaticMarkup}=require('react-dom/server'),Builder=require('../app/components/BuilderFlow.tsx').default;
 const html=renderToStaticMarkup(React.createElement(Builder,{theme:r.defaultTheme,draft:r.defaultTheme,setDraft:()=>{},apply:()=>{},notify:()=>{},ready:false}));
 assert.equal((html.match(/type="checkbox" checked=""/g)||[]).length,10);assert.ok(html.includes('File structure'));assert.ok(html.includes('Select pages'));assert.ok(html.includes('10 pages'));
-console.log('Builder flow: rendered default selection, 10 real pages, dependencies, storefront selections, and matching Next.js routes passed.');
+console.log('Builder flow: rendered default selection, 10 real pages, dependencies, and matching Next.js routes passed.');
+
+assert.equal(r.exportSchema.safeParse({name:'removed-store',framework:'next',projectType:'ecommerce',features:['overview'],theme:r.defaultTheme,variants:Object.fromEntries(Object.entries(r.variants).map(([k,v])=>[k,[v[0]]]))}).success,false);
+assert.equal(fs.existsSync('app/lib/templates/storefront.ts'),false);
+assert.ok(!require('../app/lib/component-catalog.json').some(item=>item.category==='Commerce'));
+for(const framework of ['react','next']){const result=generateProject(r.exportSchema.parse({name:'dashboard-only',framework,features:builderFeatures([]),theme:r.defaultTheme,variants:Object.fromEntries(Object.entries(r.variants).map(([k,v])=>[k,[v[0]]]))}));assert.ok(!Object.keys(result).some(file=>/storefront|cartsummary|productcard/i.test(file)))}

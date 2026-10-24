@@ -5,6 +5,10 @@
 export function themeBackgrounds(css:string,path=''):string {
  css=css.replace(/\n\/\* White layout surfaces \*\/[\s\S]*?\/\* End white layout surfaces \*\//g,'');
  if(/(?:^|[\\/])marketing[\\/]/.test(path))return css;
+ // Fixed pixel labels used to ignore live typography. Scale UI sizes from the
+ // original 14px design baseline while retaining explicit code/monospace faces.
+ css=css.replaceAll('var(--font,var(--font)),var(--font)','var(--font)').replaceAll('var(--font,Inter)','var(--font)').replace(/font-size\s*:\s*(\d+(?:\.\d+)?)px/g,(_,size:string)=>'font-size:calc(var(--size,20px) * '+Number((Number(size)/14).toFixed(5))+')')
+  .replace(/font:([^;{}]+)/g,(_,value:string)=>'font:'+value.replace(/(\d+(?:\.\d+)?)px(?=\/)/,(_,size:string)=>'calc(var(--size,20px) * '+Number((Number(size)/14).toFixed(5))+')').replace(/Inter(?:,\s*Arial)?(?:,\s*sans-serif)?/g,'var(--font)').replace(/Arial,\s*sans-serif/g,'var(--font)'));
  // Normalize the old blanket gradients before applying the selected surface style.
  // Keep deliberate artwork (charts, hero sections and gradient variants) intact.
  const themed=css

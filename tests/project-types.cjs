@@ -12,9 +12,8 @@ for(const framework of ['next','react']){
   const config=r.exportSchema.parse(configureProject(type.id,{...base,framework}));const files=generateProject(config);assert.equal(JSON.parse(files['project.config.json']).projectType,type.id);
   assert.ok(!config.features.some(id=>['builder','components'].includes(id)));assert.ok(Object.values(config.pages).flat().length>0);
   if(type.id==='dashboard')assert.deepEqual(config.features,applicationFeatures.map(f=>f[0]));
-  if(type.id==='ecommerce'){assert.ok(files[prefix+'App.tsx'].includes('Place demo order'));assert.ok(files[prefix+'App.tsx'].includes('Theme Builder'));assert.ok(files[prefix+'features/FeatureTheme.tsx'].includes('Save theme'));assert.ok(files[prefix+'App.tsx'].includes('localStorage.setItem'));assert.ok(files[prefix+'Storefront.module.css'].includes('@media(max-width:560px)'));assert.ok(!files[prefix+'App.tsx'].includes('__CONFIG__'));assert.ok(!config.features.includes('auth'));}
   for(const [path,source] of Object.entries(files).filter(([p])=>/\.tsx?$/.test(p)&&!p.endsWith('.d.ts'))){const diagnostics=ts.transpileModule(source,{fileName:path,reportDiagnostics:true,compilerOptions:{jsx:ts.JsxEmit.ReactJSX,target:ts.ScriptTarget.ES2022}}).diagnostics||[];assert.equal(diagnostics.filter(d=>d.category===ts.DiagnosticCategory.Error).length,0,path)}
  }
 }
 assert.deepEqual(applicationConfig({...base,features:['builder','components']}).features,['overview','theme']);
-console.log('Project types: both frameworks, studio-only exclusions, included Theme Builder, dashboard completeness, automatic component assignments, storefront generation, and template syntax passed.');
+console.log('Project types: both frameworks, studio-only exclusions, included Theme Builder, dashboard completeness, automatic component assignments, and template syntax passed.');

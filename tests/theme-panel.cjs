@@ -27,3 +27,14 @@ assert.ok(source.includes('chartColor:primary,chartSecondary:accent'));
 const preview=renderToStaticMarkup(React.createElement(Studio,props));
 assert.ok(preview.includes('stroke="var(--chart-primary,var(--primary))"'));
 assert.ok(preview.includes('fill="var(--chart-secondary,var(--accent))"'));
+assert.equal(defaultTheme.size,20);assert.equal(defaultTheme.background,'#ffffff');assert.equal(defaultTheme.surface,'#ffffff');assert.equal(defaultTheme.shadow,'strong');
+const {themeSchema}=require('../app/lib/registry.ts');
+const old={...defaultTheme,size:14,background:'#f7f8fc',shadow:'soft',font:'Georgia'};delete old.appearanceVersion;
+const upgraded=themeSchema.parse(old);assert.equal(upgraded.size,20);assert.equal(upgraded.font,'Georgia');assert.equal(upgraded.shadow,'strong');assert.equal(upgraded.background,'#ffffff');
+assert.equal(themeSchema.parse({...defaultTheme,size:14}).size,14,'Explicit current font sizes must remain user-controlled');
+assert.ok(!tokens({...defaultTheme,mode:'dark'}).includes('--shadow:none'));
+const {themeBackgrounds}=require('../app/lib/theme-backgrounds.ts');const typography=themeBackgrounds('.label{font-size:14px}.help{font-size:12px}');assert.ok(typography.includes('font-size:calc(var(--size,20px) * 1)'));assert.equal(themeBackgrounds(typography),typography);
+const {generatePreviewProject}=require('../app/lib/preview-project.ts');
+const config={name:'live-theme-check',framework:'react',features:['overview','theme'],theme:defaultTheme,variants:Object.fromEntries(Object.entries(variants).map(([k,v])=>[k,[v[0]]]))};const previewFiles=generatePreviewProject(config,{},'http://localhost:3000');const bootstrap=previewFiles['src/theme/Bootstrap.tsx'];assert.ok(bootstrap.includes('forge-preview-theme'));assert.ok(bootstrap.includes('event.origin!=="http://localhost:3000"'));assert.ok(bootstrap.includes('event.source!==window.opener'));
+
+const {latestWorkspace}=require('../app/lib/workspace-settings.ts');const applied={theme:defaultTheme,updatedAt:200},older={theme:{...defaultTheme,font:'Georgia'},updatedAt:100};assert.equal(latestWorkspace(applied,older),applied,'Reload before cloud save must retain the locally applied theme');assert.equal(latestWorkspace(older,applied),applied);assert.equal(latestWorkspace(applied,{}),applied);

@@ -7,6 +7,5 @@ export function pageMetadata(title:string,description:string,path:string):Metada
 export const faqs=[
  {question:'Do I need an account to use Forge?',answer:'The studio opens without a login. You can build a project, explore components, customize its theme, and export source code directly.'},
  {question:'Can I change the design after exporting?',answer:'Yes. Every generated application includes a Theme Builder at /theme. Change colors, design styles, typography, layout, spacing, and light or dark mode, then save your preferences.'},
- {question:'What can I export?',answer:'Choose a Next.js App Router or React/Vite application. Export a complete dashboard, customer workspace, or demonstration storefront, or download individual component variants.'},
- {question:'Does the storefront accept real payments?',answer:'The storefront includes a sample catalog, device-saved cart, and demo orders. Connect a commerce backend and payment provider before accepting real orders.'},
+ {question:'What can I export?',answer:'Choose a Next.js App Router or React/Vite application. Export a complete dashboard or customer workspace, or download individual component variants.'},
 ];

@@ -18,17 +18,17 @@ Codespaces and reverse-proxy browser URLs are supported for studio saves, export
 
 ## Project templates
 
-Visit `/templates` for 10 curated configurations across business, commerce, operations, and team workspaces. Each detail page lists its actual pages, workflows, theme, and integration requirements. Choose React/Vite or Next.js to load the configuration into Project Builder, then customize, preview, and export it. Selecting a template replaces the current project draft; the launch parameter is consumed after loading so refreshing keeps subsequent changes.
+Visit `/templates` for 8 curated configurations across business, operations, and team workspaces. Each detail page lists its actual pages, workflows, theme, and integration requirements. Choose React/Vite or Next.js to load the configuration into Project Builder, then customize, preview, and export it. Selecting a template replaces the current project draft; the launch parameter is consumed after loading so refreshing keeps subsequent changes.
 
-Definitions live in `app/lib/project-templates.ts`. One validated configuration factory supplies the catalog, detail pages, Builder handoff, sitemap, and both framework exports. Templates use the existing application features rather than maintaining separate copies of the backend. Storefront checkout remains a demo and requires a commerce backend and payment integration for real sales.
+Definitions live in `app/lib/project-templates.ts`. One validated configuration factory supplies the catalog, detail pages, Builder handoff, sitemap, and both framework exports. Templates use the existing application features rather than maintaining separate copies of the backend.
 
 Template cards use actual browser screenshots stored in `public/templates`, not wireframes. Run `npm run capture:templates` with Chromium installed (`CHROMIUM_PATH` can override its executable) to regenerate them. The capture runner starts each isolated generated project, verifies live data and dashboard task CRUD, captures its primary page, and removes its temporary runtime. Captures use sample data; exported source contains no preview accounts or screenshots. Dashboard templates preserve their primary workflow as the initial page.
 
-Run `npm run test:templates` to generate and TypeScript-check all 20 template/framework combinations. These checks verify functional composition and exports; they do not measure production throughput or capacity.
+Run `npm run test:templates` to generate and TypeScript-check all 16 template/framework combinations. These checks verify functional composition and exports; they do not measure production throughput or capacity.
 
 ## Build a project
 
-1. Select Next.js App Router or React/Vite. Choose automatic generation (complete dashboard, e-commerce storefront, or customer workspace), or manually select pages and components. Authentication dependencies are added automatically for features that store account data.
+1. Select Next.js App Router or React/Vite. Choose automatic generation (complete dashboard or customer workspace), or manually select pages and components. Authentication dependencies are added automatically for features that store account data.
 2. Choose component variants, a default header, and sidebar/navigation. Six header and seven navigation styles are available.
 3. Choose a page and assign components. Reorder or remove them. Login and registration components are routed to the standalone authentication page rather than the dashboard overview.
 4. Choose Modern, Glassmorphism, Neumorphism, Claymorphism, or Minimal at the top of Theme Studio. Preview the whole-project style, then select **Apply style to project** to save it. Styles preserve your palette and set depth and corner defaults; customize further below. Saved styles carry into previews, JSON themes, and both application exports. Use Theme Studio for palettes, light/dark/system mode, typography, borders, radius, density, shadows, chart colors, motion, and component/layout defaults.
@@ -39,7 +39,7 @@ The preview uses one active view at a time. Use **Focus project window** to retu
 
 Project configuration and applied theme save in the shared studio workspace through the workspace API, with a device fallback. The preview has a separate SQLite database and session-cookie namespace. It automatically seeds synthetic customers, products, orders, conversations, notifications, and highlights. Preview-only Admin, Manager, and Member accounts are listed in its banner. Those accounts and their credentials are never included in exported source.
 
-Automatic generation selects matching pages and component variants, then starts the real preview. An animated generation screen remains visible while compilation runs; there is no artificial delay. E-commerce generates a public responsive storefront with category/search filters, quantity controls, a cart saved on the device, and local demo order history. It does not process payments or create server orders; connect a commerce backend and payment provider before selling online.
+Automatic generation selects matching pages and component variants, then starts the real preview. An animated generation screen remains visible while compilation runs; there is no artificial delay.
 
 ## Functional pages
 
@@ -55,7 +55,7 @@ The studio and generated dashboards share reusable page implementations for over
 
 ## Components
 
-80 families and 249 variants include inputs, actions, navigation, data display, feedback, commerce, marketing, media, and authentication/profile/settings forms. Examples have interactive previews, source views, and individual or bulk ZIP downloads. Components consume shared CSS custom properties and CSS Modules. Component kits include their required form dependencies; unselected variant selectors are removed from kit styles.
+76 families and 380 variants include inputs, actions, navigation, data display, feedback, marketing, media, and authentication/profile/settings forms. Examples have interactive previews, source views, and individual or bulk ZIP downloads. Components consume shared CSS custom properties and CSS Modules. Component kits include their required form dependencies; unselected variant selectors are removed from kit styles.
 
 Library examples use local sample interactions. Full application pages use the persistent API. File and media examples select local files; they do not implement a storage/upload service.
 
@@ -101,7 +101,7 @@ npm run test:exports
 npm run test:runtime
 ```
 
-The regular suite covers backend flows, account isolation, role checks, recovery/revocation, page composition, unsafe names, feature/dependency/style exclusions, component ZIPs, and server rendering of all 249 variants. Export checks materialize and typecheck complete React and Next projects under .forge-checks. Runtime checks launch actual preview servers and verify session cookies, seeds, pagination/search, CRUD, duplicates, profile, notifications, chat, and member restrictions.
+The regular suite covers backend flows, account isolation, role checks, recovery/revocation, page composition, unsafe names, feature/dependency/style exclusions, component ZIPs, and server rendering of all 380 variants. Export checks materialize and typecheck complete React and Next projects under .forge-checks. Runtime checks launch actual preview servers and verify session cookies, seeds, pagination/search, CRUD, duplicates, profile, notifications, chat, and member restrictions.
 
 ## Hosting
 

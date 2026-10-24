@@ -4,8 +4,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "5758295c8f6dfbf803a145c73e19a229d15f28dfd3fd6ee7065e4be645b17971",
-    "imageHash": "3aee6de9a1f8e39b6cea9935d654f0d7497c435580387b6a1606b6c7fdc412ec",
+    "configHash": "7248212d8319f9649d9616feab79b94ba4077d95de53c8e4ab92d6f4aca0ceda",
+    "imageHash": "b2d2b5491f1849205febba39f42ed24bb5de487f854303122940ffc2e87d0b3e",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -14,38 +14,18 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "abbc235032e5034f6213884f8aa9db3372e70012c72dc340258e306eb3496559",
-    "imageHash": "c35a0fc12c69ba0b9791680ecca583f5178c24315f1378a90f625a694dd7ef81",
+    "configHash": "7e918c2d8de6aff7e0518f7074b1e17318ae5146e901ea64b8766a50fa14fb7a",
+    "imageHash": "fa758ac560d191b5d8c46d4da270a0782a1bf677fda5c3c9399ced8faf1a18eb",
     "liveDataVerified": true,
     "crudVerified": true
-  },
-  "market-store": {
-    "page": "shop",
-    "framework": "react",
-    "width": 1440,
-    "height": 960,
-    "configHash": "8ac5878085a69c9e1360c95082b4b9134e07efbfe332ff88e7fe6718840cfe62",
-    "imageHash": "d42e0a98d4d316c01102f2f30856fea08a56a283922e4d28e7adb70491116cb1",
-    "liveDataVerified": true,
-    "crudVerified": false
-  },
-  "atelier-store": {
-    "page": "shop",
-    "framework": "react",
-    "width": 1440,
-    "height": 960,
-    "configHash": "a517ab3216fc4eeeb26ba4380ad9bde7ab3bc8389c3f686b862550403f521820",
-    "imageHash": "84e6576ae95ba4e5f193edb79560aa65ad54c867024967ea1aa4c1d551868711",
-    "liveDataVerified": true,
-    "crudVerified": false
   },
   "retail-command": {
     "page": "orders",
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "6dd244e2d7a35dc83e4a0d50aff2e9bde4a4324705c10a7a741fa29f0ba31f38",
-    "imageHash": "ae861a6eb1a85f43f35e045eeec3f28dc94aa1b44b796b126e241ae0d4c90d20",
+    "configHash": "f2ca41dade306ea8fdc84a43fa23c617b703792dbfed4de1e7189f0d40aaef65",
+    "imageHash": "c08cb048d8045095fd95c813c30a18c65a2de05261a3978fbcd4d8b1fa1a6981",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -54,8 +34,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "35f56f40f692b9ca991d2d21d25124bd0ed714e1484425f0a86c2144fcc9ddcd",
-    "imageHash": "37c9d806e0adacc3fc32810f968077a302f918d6779e340025698c19a86464aa",
+    "configHash": "814593410df8a06352dbe800c7d2af51f2660e8f0e7ae12cae8b3717e2942084",
+    "imageHash": "769be70973724591a131085972b0b54e6be4cc848f1371f3409639947ce28b08",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -64,8 +44,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "60615d0d4ba379dab0e1e41e0bfa25dcfbc6a9cd00c5a55e80d50a4657ff53fa",
-    "imageHash": "27cb400df1487968d558175fada7749310df8f977fee158d49eb00ee4fe3154f",
+    "configHash": "790b2d14a918a20ff55691d65f2f74e460cd82913c9ec073bc944cb682bc063d",
+    "imageHash": "9c1eb53e037cd0320a6910a74bd1265059dbbc3563f4aeb5a607081bfebcecad",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -74,8 +54,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "7da1a396fcf22caa0a6ef117b60f058ecd2e73560d741ac288e43e578a12b56e",
-    "imageHash": "61371aa7601497f472e18b8a353af1e6141b8ceaa8c0063ca5f195f409073259",
+    "configHash": "ae1d90adeed0a9f93339a3dfe93fb17e3eb51f8a24f8e5d0be4738d1eb9760bd",
+    "imageHash": "315b3eac7fbc322183ee964312f146ea84ba43e644dc311be2bbfa7cc3d5103c",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -84,8 +64,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "807c04cf6a484782ba4df0991bbe46e8bce4e3c41bf3002ac544ac95b6ee39d2",
-    "imageHash": "d6b9fbb3880358e08a2ac09871dd73a7108873f324014d216e2b97f3f3bf5ac8",
+    "configHash": "4aa5fa184fa019ad8228f5f20be96cd43d5615e522da004df33be94f7e1053a3",
+    "imageHash": "731614d63014ae3c2f33e1c03a22351455ba57e1f33d10229c7d70ca4556e1e8",
     "liveDataVerified": true,
     "crudVerified": true
   },
@@ -94,8 +74,8 @@
     "framework": "react",
     "width": 1440,
     "height": 960,
-    "configHash": "630536f096dda8562a7c495541fa9a0d4b121bcf8f45beb26677c322ed751aa3",
-    "imageHash": "01d4cc43f0b503597fd109ab259e4d1b36c04751c0ea705a1d8235deff48a0ee",
+    "configHash": "cd4d3df1291ac731cb2dde88ddb913a795658be35e65d17444d4464a7aa851e8",
+    "imageHash": "3dfc11ae6e1a9b03ff0b3e355aabe3a03dba51a1a98e9316f32cd451601dafd8",
     "liveDataVerified": true,
     "crudVerified": true
   }
