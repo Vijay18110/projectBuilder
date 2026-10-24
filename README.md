@@ -16,6 +16,14 @@ Open http://localhost:3000 for the marketing homepage, /about for the product st
 
 Codespaces and reverse-proxy browser URLs are supported for studio saves, exports, and preview controls. Set APP_ORIGIN to the external browser origin when the proxy does not provide forwarded host/protocol headers.
 
+## Project templates
+
+Visit `/templates` for 10 curated configurations across business, commerce, operations, and team workspaces. Each detail page lists its actual pages, workflows, theme, and integration requirements. Choose React/Vite or Next.js to load the configuration into Project Builder, then customize, preview, and export it. Selecting a template replaces the current project draft; the launch parameter is consumed after loading so refreshing keeps subsequent changes.
+
+Definitions live in `app/lib/project-templates.ts`. One validated configuration factory supplies the catalog, detail pages, Builder handoff, sitemap, and both framework exports. Templates use the existing application features rather than maintaining separate copies of the backend. Storefront checkout remains a demo and requires a commerce backend and payment integration for real sales.
+
+Run `npm run test:templates` to generate and TypeScript-check all 20 template/framework combinations. These checks verify functional composition and exports; they do not measure production throughput or capacity.
+
 ## Build a project
 
 1. Select Next.js App Router or React/Vite. Choose automatic generation (complete dashboard, e-commerce storefront, or customer workspace), or manually select pages and components. Authentication dependencies are added automatically for features that store account data.
