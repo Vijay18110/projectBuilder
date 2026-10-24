@@ -33,20 +33,23 @@ export async function updatePreview(owner:string,id:string,config:ExportConfig){
  }
  const p=preview;p.touched=Date.now();
  const operation=p.queue.catch(()=>{}).then(async()=>{
-  const restart=p.framework!==config.framework||!p.process||p.failed||p.version!==3;
-  if(restart){await stop(p);p.framework=config.framework;p.port=await freePort();p.failed=false;p.log='';p.version=3;}
+  const restart=p.framework!==config.framework||!p.process||p.failed||p.version!==4;
+  if(restart){await stop(p);p.framework=config.framework;p.port=await freePort();p.failed=false;p.log='';p.version=4;}
+  const codespace=process.env.CODESPACE_NAME,domain=process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN||'app.github.dev';
+  const publicOrigin=codespace&&/^[a-z0-9-]+$/.test(codespace)&&/^[a-z0-9.-]+$/.test(domain)?'https://'+codespace+'-'+p.port+'.'+domain:'http://localhost:'+p.port;
+  const publicHost=new URL(publicOrigin).hostname;
   const files=generatePreviewProject(config,readStudioSources());
   // Both compilers use the studio's installed packages; no install runs per change.
-  if(config.framework==='next')files['next.config.ts']=`const config={turbopack:{root:${JSON.stringify(process.cwd())}},devIndicators:false};export default config;`;
-  else files['vite.config.ts']=`import {defineConfig} from 'vite';import react from '@vitejs/plugin-react';import {Readable} from 'node:stream';import {handle} from './server/handler.mjs';export default defineConfig({plugins:[react(),{name:'forge-preview-api',configureServer(server){server.middlewares.use(async(req,res,next)=>{if(!req.url?.startsWith('/api/'))return next();try{const response=await handle(new Request('http://localhost:${p.port}'+req.url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Readable.toWeb(req),duplex:'half'}:{})}));res.statusCode=response.status;response.headers.forEach((v,k)=>res.setHeader(k,v));res.end(Buffer.from(await response.arrayBuffer()))}catch{res.statusCode=500;res.end(JSON.stringify({error:'Preview API unavailable'}))}})}}],server:{host:'127.0.0.1',port:${p.port},strictPort:true,fs:{allow:[${JSON.stringify(process.cwd())}]}}});`;
+  if(config.framework==='next')files['next.config.ts']=`const config={turbopack:{root:${JSON.stringify(process.cwd())}},allowedDevOrigins:[${JSON.stringify(publicHost)}],devIndicators:false};export default config;`;
+  else files['vite.config.ts']=`import {defineConfig} from 'vite';import react from '@vitejs/plugin-react';import {Readable} from 'node:stream';import {handle} from './server/handler.mjs';export default defineConfig({plugins:[react(),{name:'forge-preview-api',configureServer(server){server.middlewares.use(async(req,res,next)=>{if(!req.url?.startsWith('/api/'))return next();try{const response=await handle(new Request('http://localhost:${p.port}'+req.url,{method:req.method,headers:req.headers,...(!['GET','HEAD'].includes(req.method)?{body:Readable.toWeb(req),duplex:'half'}:{})}));res.statusCode=response.status;response.headers.forEach((v,k)=>res.setHeader(k,v));res.end(Buffer.from(await response.arrayBuffer()))}catch{res.statusCode=500;res.end(JSON.stringify({error:'Preview API unavailable'}))}})}}],server:{host:'0.0.0.0',allowedHosts:[${JSON.stringify(publicHost)}],port:${p.port},strictPort:true,fs:{allow:[${JSON.stringify(process.cwd())}]}}});`;
   await mkdir(p.dir,{recursive:true});
   for(const path of p.files)if(!(path in files))await unlink(within(p.dir,path)).catch(()=>{});
   for(const [path,value] of Object.entries(files)){const dest=within(p.dir,path);await mkdir(dirname(dest),{recursive:true});if(await readFile(dest,'utf8').catch(()=>null)!==value)await writeFile(dest,value);}
   p.files=Object.keys(files);p.routes=config.features.filter(x=>x!=='auth');
   if(restart){
    const cli=config.framework==='next'?requireFromWorkspace.resolve('next/dist/bin/next'):resolve(dirname(requireFromWorkspace.resolve('vite/package.json')),'bin','vite.js');
-   const args=config.framework==='next'?[cli,'dev','--hostname','127.0.0.1','--port',String(p.port)]:[cli,'--host','127.0.0.1'];
-   const child=spawn(process.execPath,args,{cwd:p.dir,windowsHide:true,stdio:['ignore','pipe','pipe'],env:{...process.env,NODE_ENV:'development',NEXT_TELEMETRY_DISABLED:'1',FORGE_PREVIEW:'1',FORGE_PREVIEW_PASSWORD:'PreviewDemo123',FORGE_DB_PATH:resolve(p.dir,'data','preview.sqlite'),SESSION_COOKIE:'forge_preview_'+p.id.replaceAll('-',''),APP_ORIGIN:'http://localhost:'+p.port,EMAIL_WEBHOOK_URL:'',EMAIL_WEBHOOK_TOKEN:''}});p.process=child;
+   const args=config.framework==='next'?[cli,'dev','--hostname','0.0.0.0','--port',String(p.port)]:[cli,'--host','0.0.0.0'];
+   const child=spawn(process.execPath,args,{cwd:p.dir,windowsHide:true,stdio:['ignore','pipe','pipe'],env:{...process.env,NODE_ENV:'development',NEXT_TELEMETRY_DISABLED:'1',FORGE_PREVIEW:'1',FORGE_PREVIEW_PASSWORD:'PreviewDemo123',FORGE_DB_PATH:resolve(p.dir,'data','preview.sqlite'),SESSION_COOKIE:'forge_preview_'+p.id.replaceAll('-',''),APP_ORIGIN:publicOrigin,EMAIL_WEBHOOK_URL:'',EMAIL_WEBHOOK_TOKEN:''}});p.process=child;
    const log=(chunk:Buffer)=>{p.log=(p.log+chunk.toString()).slice(-6000)};child.stdout?.on('data',log);child.stderr?.on('data',log);
    child.on('error',error=>{p.failed=true;p.log=error.message});child.on('exit',()=>{if(p.process===child)p.failed=true});
   }

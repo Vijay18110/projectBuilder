@@ -1,5 +1,6 @@
 'use client';
 import {useEffect,useRef,useState} from 'react';
+import {previewOrigin} from '../lib/preview-url';
 import {ExportConfig,exportSchema} from '../lib/registry';
 import s from './RunningPreview.module.css';
 
@@ -26,7 +27,7 @@ export default function RunningPreview({config,page,openSignal=0,scope='local'}:
       const check=await fetch('/api/preview?id='+id.current+'&page='+encodeURIComponent(page||''),{signal:controller.signal,cache:'no-store'}),result=await check.json();
       if(!check.ok)throw Error(result.error||'Preview unavailable');if(result.state==='error')throw Error(result.error);if(result.state==='expired')throw Error('Preview expired. Retry to restart.');
       if(result.state==='ready'){
-       if(cancelled||latest.current!==desired)return;const nextUrl=`${location.protocol}//${location.hostname}:${data.port}`;setUrl(nextUrl);setStatus('Live · '+(config.framework==='next'?'Next.js App Router':'React + Vite'));
+       if(cancelled||latest.current!==desired)return;const nextUrl=previewOrigin(location.origin,data.port);setUrl(nextUrl);setStatus('Live · '+(config.framework==='next'?'Next.js App Router':'React + Vite'));
        if(pendingLaunch.current&&previewWindow.current&&!previewWindow.current.closed){pendingLaunch.current=false;previewWindow.current.location.href=nextUrl+route+(route.includes('?')?'&':'?')+'revision='+version}
        return;
       }

@@ -10,6 +10,12 @@ const request=(path,method='GET',body,extra={})=>new Request('http://localhost:3
 assert.equal(validStudioOrigin(request('profile','PUT')),true);
 assert.equal(validStudioOrigin(request('profile','PUT',null,{origin:'https://other.example'})),false);
 assert.equal(validStudioOrigin(request('profile','PUT',null,{'x-forwarded-host':'example-3000.app.github.dev,evil.example'})),false);
+const previousCodespace=process.env.CODESPACE_NAME,previousDomain=process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN,previousPort=process.env.PORT;
+process.env.CODESPACE_NAME='example';process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN='app.github.dev';process.env.PORT='3000';
+const strippedProxyRequest=new Request('http://localhost:3000/api/preview',{method:'POST',headers:{origin,'x-forwarded-host':'localhost:3000','x-forwarded-proto':'http'}});
+assert.equal(validStudioOrigin(strippedProxyRequest),true);
+assert.equal(validStudioOrigin(new Request(strippedProxyRequest,{headers:{origin:'https://other-3000.app.github.dev'}})),false);
+for(const [key,value] of Object.entries({CODESPACE_NAME:previousCodespace,GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN:previousDomain,PORT:previousPort}))if(value===undefined)delete process.env[key];else process.env[key]=value;
 for(const path of ['auth/me','auth/login','auth/register','auth/forgot','team'])assert.equal((await handle(request(path))).status,404);
 assert.equal((await handle(request('records/customers'))).status,200);
 const created=await handle(request('records/customers','POST',{name:'Open studio customer',email:'open@example.com',amount:42}));assert.equal(created.status,200);
