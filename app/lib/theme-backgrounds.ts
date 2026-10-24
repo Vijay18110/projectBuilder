@@ -13,14 +13,14 @@ export function themeBackgrounds(css:string,path=''):string {
  };
  const themed=css.replace(/\bbackground\s*:\s*var\(--(surface|muted|bg|primary|accent)\)(?=\s*[;}])/g,(_,key:string)=>'background:'+surfaces[key])
   .replace(/\bbackground\s*:\s*(color-mix\(in srgb,\s*var\(--primary\)\s+(\d+(?:\.\d+)?)%,\s*var\(--surface\)\))(?=\s*[;}])/g,(_,color:string,amount:string)=>'background:linear-gradient(120deg,'+color+',color-mix(in srgb,var(--accent) '+amount+'%,var(--surface)))');
- const names=['card','panel','header','footer','sidebar','product'];
+ const names=['card','panel','header','footer','sidebar','product','chart','recent','previewNav','menu'];
  if(/(?:^|[\\/])Card\.module\.css$/.test(path))names.push('base');
  if(path.includes('NavbarExample'))names.push('nav');
  if(path.includes('SidebarExample'))names.push('side');
  const targets=names.filter(name=>new RegExp('\\.'+name+'(?=[\\s.{:#>+~\\[])').test(css));
  if(!targets.length)return themed;
  const selectors=targets.map(name=>'.'+name+'.'+name).join(',');
- const scope='--surface:#fff;--text:#23243a;--secondary:#6b6d82;--muted:#f3f4f8;--border:#e8e9f1;background:#fff;color:var(--text);';
+ const scope='background:var(--design-surface,var(--surface));color:var(--text);box-shadow:var(--design-shadow,var(--shadow));backdrop-filter:var(--design-blur,none);-webkit-backdrop-filter:var(--design-blur,none);border-color:var(--border);';
  const sidebar=targets.includes('sidebar')?'.sidebar.sidebar .brand{color:var(--text)}.sidebar.sidebar nav a{color:var(--secondary)}.sidebar.sidebar nav a[aria-current=page]{color:var(--primary)}':'';
  return themed+'\n/* White layout surfaces */'+selectors+'{'+scope+'}'+sidebar+'/* End white layout surfaces */';
 }

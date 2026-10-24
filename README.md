@@ -19,7 +19,7 @@ Open http://localhost:3000. Register an account, open the development verificati
 1. Select Next.js App Router or React/Vite. Choose automatic generation (complete dashboard, e-commerce storefront, or customer workspace), or manually select pages and components. Authentication dependencies are added automatically for features that store account data.
 2. Choose component variants, a default header, and sidebar/navigation. Six header and seven navigation styles are available.
 3. Choose a page and assign components. Reorder or remove them. Login and registration components are routed to the standalone authentication page rather than the dashboard overview.
-4. Use Theme Studio for palettes, light/dark/system mode, typography, borders, radius, density, shadows, chart colors, motion, and component/layout defaults.
+4. Choose Modern, Glassmorphism, Neumorphism, Claymorphism, or Minimal at the top of Theme Studio. Preview the whole-project style, then select **Apply style to project** to save it. Styles preserve your palette and set depth and corner defaults; customize further below. Saved styles carry into previews, JSON themes, and both application exports. Use Theme Studio for palettes, light/dark/system mode, typography, borders, radius, density, shadows, chart colors, motion, and component/layout defaults.
 5. Click **Open Real Project**. A connected window runs generated source using the chosen framework. Studio navigation keeps it connected, and configuration changes refresh it automatically.
 6. Review pages, component assignments, theme, layout, dependencies, environment variables, and setup steps. Apply and export the draft, or download the last applied theme.
 
