@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {mkdtempSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 process.chdir(mkdtempSync(tmpdir()+'/forge-api-'));
-const {handle}=await import(process.argv[2]||new URL('../server/handler.mjs',import.meta.url).href);
+const {handle}=process.argv[2]?await import(process.argv[2]):(await import('../server/backend-core.mjs')).createBackend();
 let link='';const original=console.log;console.log=(value)=>{if(String(value).startsWith('Development email'))link=String(value).split(': ').slice(1).join(': ')};
 async function call(path,body,cookie){return handle(new Request('http://localhost:3000/api/'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(cookie?{cookie}:{})},...(body?{body:JSON.stringify(body)}:{})}))}
 assert.equal((await call('records/customers')).status,401);

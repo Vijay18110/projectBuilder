@@ -12,7 +12,9 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000. Register an account, open the development verification link printed in the server terminal, then sign in. The first account is Admin; later accounts are Members. Production email delivery requires EMAIL_WEBHOOK_URL and EMAIL_WEBHOOK_TOKEN. The webhook receives `{to, subject, text}`. No provider is contacted without configuration.
+Open http://localhost:3000. The studio opens directly in Project Builder without login, registration, email verification, or session cookies. The legacy /login URL redirects to the builder. Studio settings and business data use one shared workspace on this instance; existing account databases are retained, and old account records are not automatically copied into the shared workspace. Authentication remains an optional feature for generated applications.
+
+Codespaces and reverse-proxy browser URLs are supported for studio saves, exports, and preview controls. Set APP_ORIGIN to the external browser origin when the proxy does not provide forwarded host/protocol headers.
 
 ## Build a project
 
@@ -25,7 +27,7 @@ Open http://localhost:3000. Register an account, open the development verificati
 
 The preview uses one active view at a time. Use **Focus project window** to return to the running application, or **Use embedded preview** for desktop, tablet, mobile, and full-screen views inside the studio. Closing the project window restores the embedded view. Framework hot updates preserve the running session while theme and component configuration changes.
 
-Project configuration and applied theme save separately per account through the workspace API, with a device fallback. The preview has a separate SQLite database and session-cookie namespace. It automatically seeds synthetic customers, products, orders, conversations, notifications, and highlights. Preview-only Admin, Manager, and Member accounts are listed in its banner. Those accounts and their credentials are never included in exported source.
+Project configuration and applied theme save in the shared studio workspace through the workspace API, with a device fallback. The preview has a separate SQLite database and session-cookie namespace. It automatically seeds synthetic customers, products, orders, conversations, notifications, and highlights. Preview-only Admin, Manager, and Member accounts are listed in its banner. Those accounts and their credentials are never included in exported source.
 
 Automatic generation selects matching pages and component variants, then starts the real preview. An animated generation screen remains visible while compilation runs; there is no artificial delay. E-commerce generates a public responsive storefront with category/search filters, quantity controls, a cart saved on the device, and local demo order history. It does not process payments or create server orders; connect a commerce backend and payment provider before selling online.
 
@@ -89,4 +91,4 @@ The regular suite covers backend flows, account isolation, role checks, recovery
 
 ## Hosting
 
-Use persistent storage for data/workspace.sqlite and back it up. The preview runner needs a local Node host that can spawn processes and listen on loopback ports. It runs one project per account, with six total slots and a 15-minute idle timeout. A remotely hosted or serverless deployment needs a routed preview service; exported applications run independently of that studio service. Chat uses polling rather than WebSockets.
+Use persistent storage for data/workspace.sqlite and back it up. The preview runner needs a local Node host that can spawn processes and listen on loopback ports. The studio runs one active project for its shared workspace, with a 15-minute idle timeout. A remotely hosted or serverless deployment needs a routed preview service; exported applications run independently of that studio service. Chat uses polling rather than WebSockets.
