@@ -33,7 +33,7 @@ Automatic generation selects matching pages and component variants, then starts 
 
 ## Functional pages
 
-The studio and generated dashboards share reusable page implementations for overview, analytics, customers, products, orders, tables, forms, authentication, team permissions, chat, notifications, carousel, and profile. Theme Studio, Project Builder/Export, and Component Library are studio tools and are excluded from generated applications.
+The studio and generated dashboards share reusable page implementations for overview, analytics, customers, products, orders, tables, forms, authentication, team permissions, chat, notifications, carousel, and profile. Every generated application includes a Theme Builder at /theme for user-adjustable styles, palettes, typography, spacing, borders, layout, and light/dark/system modes. Project Builder/Export and Component Library stay in the studio.
 
 - Axios services load all workspace data from authenticated APIs.
 - Record lists support server search, filters, sorting, pagination, CSV export, and bulk deletion.
@@ -80,7 +80,7 @@ The studio uses an original Forge F mark across navigation, the component librar
 - server/preview-manager.ts: isolated runtime lifecycle and source updates.
 - app/lib/component-catalog.json: component export source; component-metadata.json contains lightweight builder metadata.
 
-After changing shared templates or the backend, run `npm run sync:templates` to update the studio copies and backend export snapshot. Generated applications exclude Project Builder, Component Library, and Theme Studio. The design tokens and selected component implementations are included, while all project composition tools stay in the studio. Legacy saved configurations are filtered at generation time.
+After changing shared templates or the backend, run `npm run sync:templates` to update the studio copies and backend export snapshot. Generated applications include Theme Builder and exclude Project Builder and Component Library. Theme Builder saves changes on the device and syncs them to the workspace API when available. The design tokens and selected component implementations are included, while project composition tools stay in the studio. Legacy saved configurations are filtered at generation time.
 
 ## Verify
 

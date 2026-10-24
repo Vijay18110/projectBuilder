@@ -7,10 +7,10 @@ export const projectTypes = [
  {id:'crm',name:'Customer workspace',icon:'Users',description:'Customers, orders, analytics, team collaboration, and profile pages.'},
 ] as const;
 export type ProjectType=typeof projectTypes[number]['id'];
-export const applicationFeatures=features.filter(f=>!['builder','components','theme'].includes(f[0]));
+export const applicationFeatures=features.filter(f=>!['builder','components'].includes(f[0]));
 export function applicationConfig(config:ExportConfig):ExportConfig {
- const selected=resolveFeatures(config.features.filter(id=>!['builder','components','theme'].includes(id)));
- const ids=selected.length?selected:['overview' as const];
+ const selected=resolveFeatures(config.features.filter(id=>!['builder','components'].includes(id)));
+ const ids=resolveFeatures([...(selected.some(id=>id!=='theme')?selected:['overview']),'theme']);
  return {...config,features:ids,pages:Object.fromEntries(Object.entries(config.pages||{}).filter(([id])=>ids.some(x=>x===id)))};
 }
 export function configureProject(type:ProjectType,base:ExportConfig):ExportConfig {

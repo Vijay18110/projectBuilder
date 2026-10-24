@@ -2,7 +2,7 @@
 import BrandMark from '../components/BrandMark';
 import {ReactNode,useState,useEffect} from 'react';import {LayoutDashboard,ChartNoAxesCombined,Users,Package,ShoppingBag,Table2,ListChecks,UserRoundCog,MessagesSquare,Bell,GalleryHorizontalEnd,CircleUserRound,Palette,Blocks,Shapes,Box,Search,Moon,ChevronDown,Settings2} from 'lucide-react';const Icons={LayoutDashboard,ChartNoAxesCombined,Users,Package,ShoppingBag,Table2,ListChecks,UserRoundCog,MessagesSquare,Bell,GalleryHorizontalEnd,CircleUserRound,Palette,Blocks,Shapes,Box};import baseConfig from '../../project.config.json';import {api} from '../lib/api';import {useResource} from '../lib/resource';import {Button} from '../components/UI';import s from './DashboardLayout.module.css';
 type User={name:string;role:string;email:string};
-const names:Record<string,string>={overview:'Overview',analytics:'Analytics',customers:'Customers',products:'Products',orders:'Orders',tables:'Tables',forms:'Forms',team:'Team',chat:'Chat',notifications:'Notifications',carousel:'Carousel',profile:'Profile',tasks:'Tasks & projects',calendar:'Calendar',help:'Help center',theme:'Theme Studio',builder:'Project Builder',components:'Components'};
+const names:Record<string,string>={overview:'Overview',analytics:'Analytics',customers:'Customers',products:'Products',orders:'Orders',tables:'Tables',forms:'Forms',team:'Team',chat:'Chat',notifications:'Notifications',carousel:'Carousel',profile:'Profile',tasks:'Tasks & projects',calendar:'Calendar',help:'Help center',theme:'Theme Builder',builder:'Project Builder',components:'Components'};
 const icons:Record<string,string>={overview:'LayoutDashboard',analytics:'ChartNoAxesCombined',customers:'Users',products:'Package',orders:'ShoppingBag',tables:'Table2',forms:'ListChecks',team:'UserRoundCog',chat:'MessagesSquare',notifications:'Bell',carousel:'GalleryHorizontalEnd',profile:'CircleUserRound',tasks:'ListChecks',calendar:'Table2',help:'MessagesSquare',theme:'Palette',builder:'Blocks',components:'Shapes'};
 function Icon({id,variant='rounded'}:{id:string;variant?:string}){const Component=(Icons as unknown as Record<string,React.ComponentType<{size:number}>>)[icons[id]||'Box'];return <span className={[s.icon,s['icon_'+variant]].join(' ')}><Component size={19}/></span>}
 export default function DashboardLayout({page,user,onLogout,children,settings,onNavigate}:{onNavigate?:(page:string,search?:string)=>void;settings?:{name:string;features:string[];variants:Record<string,string[]>};page:string;user:User|null;onLogout:()=>void;children:ReactNode}){
@@ -17,7 +17,7 @@ export default function DashboardLayout({page,user,onLogout,children,settings,on
   {title:'Management',items:['customers','products','orders','team'].filter(id=>pages.includes(id))},
   {title:'Applications',items:['tasks','calendar','chat','notifications'].filter(id=>pages.includes(id))},
   {title:'Library',items:['components'].filter(id=>pages.includes(id))},
-  {title:'Studio & Settings',items:['builder','theme','profile','help'].filter(id=>pages.includes(id))}
+  {title:config.features.includes('builder')?'Studio & Settings':'Settings',items:['builder','theme','profile','help'].filter(id=>pages.includes(id))}
  ];
  const categorized=navSections.flatMap(s=>s.items);
  const otherPages=pages.filter(id=>!categorized.includes(id));
