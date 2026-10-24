@@ -12,6 +12,7 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "node tests/run.cjs",
+    "capture:templates": "node scripts/capture-template-previews.cjs",
     "test:templates": "node tests/project-templates.cjs --typecheck",
     "test:exports": "node tests/upgrade.cjs",
     "test:runtime": "node tests/real-preview.cjs",

@@ -15,10 +15,10 @@ ${ids.map(id=>`const Feature${id}=lazy(()=>import('./features/Feature${id.charAt
 const modules:Record<string,React.ComponentType>={${ids.map(id=>id+':Feature'+id).join(',')}};
 type User={name:string;email:string;role:string};
 function Application({initialPage}:{initialPage?:string}){
- const [page,setPage]=useState(initialPage||${JSON.stringify(ids[0]||'auth')}),[user,setUser]=useState<User|null>(null),[ready,setReady]=useState(${!auth}),[error,setError]=useState(''),[revision,setRevision]=useState(0);
+ const [page,setPage]=useState(initialPage||${JSON.stringify(c.startPage||ids[0]||'auth')}),[user,setUser]=useState<User|null>(null),[ready,setReady]=useState(${!auth}),[error,setError]=useState(''),[revision,setRevision]=useState(0);
  async function load(){try{setUser((await api.get('/auth/me')).data);setError('')}catch(e){if((e as {response?:{status:number}}).response?.status!==401)setError('Unable to connect. Check your connection and try again.')}finally{setReady(true)}}
  useEffect(()=>{const route=location.pathname.slice(1);if(modules[route])setPage(route);${auth?'void load();':''}const expire=()=>setUser(null);window.addEventListener('session-expired',expire);return()=>window.removeEventListener('session-expired',expire)},[]);
- useEffect(()=>{const back=()=>setPage(modules[location.pathname.slice(1)]?location.pathname.slice(1):${JSON.stringify(ids[0]||'auth')});window.addEventListener('popstate',back);return()=>window.removeEventListener('popstate',back)},[]);
+ useEffect(()=>{const back=()=>setPage(modules[location.pathname.slice(1)]?location.pathname.slice(1):${JSON.stringify(c.startPage||ids[0]||'auth')});window.addEventListener('popstate',back);return()=>window.removeEventListener('popstate',back)},[]);
  function navigate(id:string,search?:string){if(!modules[id])return;history.pushState(null,'','/'+id+(search?'?search='+encodeURIComponent(search):''));setPage(id);setRevision(n=>n+1);document.getElementById('page-content')?.scrollTo(0,0)}
  if(!ready)return <Loading/>;
  if(error)return <ErrorState message={error} retry={()=>void load()}/>;

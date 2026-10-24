@@ -22,6 +22,8 @@ Visit `/templates` for 10 curated configurations across business, commerce, oper
 
 Definitions live in `app/lib/project-templates.ts`. One validated configuration factory supplies the catalog, detail pages, Builder handoff, sitemap, and both framework exports. Templates use the existing application features rather than maintaining separate copies of the backend. Storefront checkout remains a demo and requires a commerce backend and payment integration for real sales.
 
+Template cards use actual browser screenshots stored in `public/templates`, not wireframes. Run `npm run capture:templates` with Chromium installed (`CHROMIUM_PATH` can override its executable) to regenerate them. The capture runner starts each isolated generated project, verifies live data and dashboard task CRUD, captures its primary page, and removes its temporary runtime. Captures use sample data; exported source contains no preview accounts or screenshots. Dashboard templates preserve their primary workflow as the initial page.
+
 Run `npm run test:templates` to generate and TypeScript-check all 20 template/framework combinations. These checks verify functional composition and exports; they do not measure production throughput or capacity.
 
 ## Build a project

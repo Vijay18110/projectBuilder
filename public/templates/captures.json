@@ -1,0 +1,102 @@
+{
+  "pulse-analytics": {
+    "page": "overview",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "5758295c8f6dfbf803a145c73e19a229d15f28dfd3fd6ee7065e4be645b17971",
+    "imageHash": "3aee6de9a1f8e39b6cea9935d654f0d7497c435580387b6a1606b6c7fdc412ec",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "pipeline-crm": {
+    "page": "customers",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "abbc235032e5034f6213884f8aa9db3372e70012c72dc340258e306eb3496559",
+    "imageHash": "c35a0fc12c69ba0b9791680ecca583f5178c24315f1378a90f625a694dd7ef81",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "market-store": {
+    "page": "shop",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "8ac5878085a69c9e1360c95082b4b9134e07efbfe332ff88e7fe6718840cfe62",
+    "imageHash": "d42e0a98d4d316c01102f2f30856fea08a56a283922e4d28e7adb70491116cb1",
+    "liveDataVerified": true,
+    "crudVerified": false
+  },
+  "atelier-store": {
+    "page": "shop",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "a517ab3216fc4eeeb26ba4380ad9bde7ab3bc8389c3f686b862550403f521820",
+    "imageHash": "84e6576ae95ba4e5f193edb79560aa65ad54c867024967ea1aa4c1d551868711",
+    "liveDataVerified": true,
+    "crudVerified": false
+  },
+  "retail-command": {
+    "page": "orders",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "6dd244e2d7a35dc83e4a0d50aff2e9bde4a4324705c10a7a741fa29f0ba31f38",
+    "imageHash": "ae861a6eb1a85f43f35e045eeec3f28dc94aa1b44b796b126e241ae0d4c90d20",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "agency-studio": {
+    "page": "tasks",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "35f56f40f692b9ca991d2d21d25124bd0ed714e1484425f0a86c2144fcc9ddcd",
+    "imageHash": "37c9d806e0adacc3fc32810f968077a302f918d6779e340025698c19a86464aa",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "support-workspace": {
+    "page": "chat",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "60615d0d4ba379dab0e1e41e0bfa25dcfbc6a9cd00c5a55e80d50a4657ff53fa",
+    "imageHash": "27cb400df1487968d558175fada7749310df8f977fee158d49eb00ee4fe3154f",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "inventory-desk": {
+    "page": "products",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "7da1a396fcf22caa0a6ef117b60f058ecd2e73560d741ac288e43e578a12b56e",
+    "imageHash": "61371aa7601497f472e18b8a353af1e6141b8ceaa8c0063ca5f195f409073259",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "revenue-desk": {
+    "page": "analytics",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "807c04cf6a484782ba4df0991bbe46e8bce4e3c41bf3002ac544ac95b6ee39d2",
+    "imageHash": "d6b9fbb3880358e08a2ac09871dd73a7108873f324014d216e2b97f3f3bf5ac8",
+    "liveDataVerified": true,
+    "crudVerified": true
+  },
+  "team-hub": {
+    "page": "calendar",
+    "framework": "react",
+    "width": 1440,
+    "height": 960,
+    "configHash": "630536f096dda8562a7c495541fa9a0d4b121bcf8f45beb26677c322ed751aa3",
+    "imageHash": "01d4cc43f0b503597fd109ab259e4d1b36c04751c0ea705a1d8235deff48a0ee",
+    "liveDataVerified": true,
+    "crudVerified": true
+  }
+}

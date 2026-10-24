@@ -11,7 +11,7 @@ export const applicationFeatures=features.filter(f=>!['builder','components'].in
 export function applicationConfig(config:ExportConfig):ExportConfig {
  const selected=resolveFeatures(config.features.filter(id=>!['builder','components'].includes(id)));
  const ids=resolveFeatures([...(selected.some(id=>id!=='theme')?selected:['overview']),'theme']);
- return {...config,features:ids,pages:Object.fromEntries(Object.entries(config.pages||{}).filter(([id])=>ids.some(x=>x===id)))};
+ return {...config,startPage:config.startPage&&ids.includes(config.startPage)?config.startPage:undefined,features:ids,pages:Object.fromEntries(Object.entries(config.pages||{}).filter(([id])=>ids.some(x=>x===id)))};
 }
 export function configureProject(type:ProjectType,base:ExportConfig):ExportConfig {
  const selected=type==='dashboard'?applicationFeatures.map(f=>f[0]):type==='crm'?resolveFeatures(['overview','analytics','customers','products','orders','team','chat','notifications','profile','tasks','calendar','help']):['overview' as const];
